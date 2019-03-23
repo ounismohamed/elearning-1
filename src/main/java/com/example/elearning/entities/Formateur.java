@@ -1,9 +1,6 @@
 package com.example.elearning.entities;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
@@ -15,6 +12,14 @@ public class Formateur extends Profile {
     private Collection<Ressource> ressources;
     @OneToMany(mappedBy = "id",fetch = FetchType.LAZY)
     private Collection<Module> modules;
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+            name = "Formateur_has_formation",
+            joinColumns = { @JoinColumn(name = "idformateur") },
+            inverseJoinColumns = { @JoinColumn(name = "idformation") }
+    )
+    private Collection<Formation> formations;
 
     public Formateur(String identifiant, String motdepasse, String nom, String email, int anciennete, String domaineExpertise) {
         super(identifiant, motdepasse, nom, email);

@@ -24,6 +24,8 @@ public class Module implements Serializable {
     private Collection<Ressource> ressources;
     @OneToMany(mappedBy = "idchapitre",fetch = FetchType.LAZY)
     private Collection<Chapitre> chapitres;
+    @ManyToMany(mappedBy = "modules",fetch = FetchType.LAZY)
+    private Collection<Apprenant> apprenants;
 
     public Module(String nom, String description, int duree, int nbrchapitre, String typeressource, Formation formation, Formateur formateur) {
         this.nom = nom;

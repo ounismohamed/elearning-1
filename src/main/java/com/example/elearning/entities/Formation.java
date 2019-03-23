@@ -19,6 +19,8 @@ public class Formation implements Serializable {
 
     @ManyToMany(mappedBy = "formations",fetch = FetchType.LAZY)
     private Collection<Apprenant> apprenants;
+    @ManyToMany(mappedBy = "formations",fetch = FetchType.LAZY)
+    private Collection<Formateur> formateurs;
 
     public Formation(String nomformation, int duree, String discipline, String description, int nombremodules) {
         this.nomformation = nomformation;
