@@ -9,6 +9,7 @@ public class Formation implements Serializable {
     @Id
     @GeneratedValue
     private int idformation;
+    @Column(nullable=false)
     private String nomformation;
     private int duree;
     private String discipline;
@@ -28,6 +29,9 @@ public class Formation implements Serializable {
         this.discipline = discipline;
         this.description = description;
         this.nombremodules = nombremodules;
+    }
+
+    public Formation() {
     }
 
     public int getIdformation() {

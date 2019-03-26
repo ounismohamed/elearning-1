@@ -1,4 +1,4 @@
-package com.example.elearning.dao;
+package com.example.elearning.repositories;
 
 import com.example.elearning.entities.Module;
 import org.springframework.data.jpa.repository.JpaRepository;
