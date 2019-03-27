@@ -1,9 +1,13 @@
 package com.example.elearning.entities;
 
 
-import javax.persistence.*;
-import java.util.Collection;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Getter @Setter
 @Entity
 @DiscriminatorValue("A")
 public class Apprenant extends Profile {
@@ -14,7 +18,7 @@ public class Apprenant extends Profile {
             joinColumns = { @JoinColumn(name = "idapprenant") },
             inverseJoinColumns = { @JoinColumn(name = "idformation") }
     )
-    private Collection<Formation> formations;
+    private List<Formation> formations;
 
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
@@ -22,7 +26,7 @@ public class Apprenant extends Profile {
             joinColumns = { @JoinColumn(name = "idapprenant") },
             inverseJoinColumns = { @JoinColumn(name = "idmodule") }
     )
-    private Collection<Module> modules;
+    private List<Module> modules;
 
 
     public Apprenant(String identifiant, String motdepasse, String nom, String email) {

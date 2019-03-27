@@ -1,13 +1,19 @@
 package com.example.elearning.entities;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 
+@Getter @Setter @NoArgsConstructor
 @Entity
 public class Module implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private int id;
     private String nom;
     private String description;
@@ -20,12 +26,12 @@ public class Module implements Serializable {
     @ManyToOne
     @JoinColumn(name = "formateur_id")
     private Formateur formateur;
-    @OneToMany(mappedBy = "id",fetch = FetchType.LAZY)
-    private Collection<Ressource> ressources;
+    @OneToMany(mappedBy = "id",fetch = FetchType.LAZY) //FetchType.LAZY: lazy loading only on demand
+    private List<Ressource> ressources;
     @OneToMany(mappedBy = "idchapitre",fetch = FetchType.LAZY)
-    private Collection<Chapitre> chapitres;
+    private List<Chapitre> chapitres;
     @ManyToMany(mappedBy = "modules",fetch = FetchType.LAZY)
-    private Collection<Apprenant> apprenants;
+    private List<Apprenant> apprenants;
 
     public Module(String nom, String description, int duree, int nbrchapitre, String typeressource, Formation formation, Formateur formateur) {
         this.nom = nom;
@@ -37,83 +43,5 @@ public class Module implements Serializable {
         this.formateur = formateur;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public int getDuree() {
-        return duree;
-    }
-
-    public void setDuree(int duree) {
-        this.duree = duree;
-    }
-
-    public int getNbrchapitre() {
-        return nbrchapitre;
-    }
-
-    public void setNbrchapitre(int nbrchapitre) {
-        this.nbrchapitre = nbrchapitre;
-    }
-
-    public String getTyperessource() {
-        return typeressource;
-    }
-
-    public void setTyperessource(String typeressource) {
-        this.typeressource = typeressource;
-    }
-
-    public Formation getFormation() {
-        return formation;
-    }
-
-    public void setFormation(Formation formation) {
-        this.formation = formation;
-    }
-
-    public Formateur getFormateur() {
-        return formateur;
-    }
-
-    public void setFormateur(Formateur formateur) {
-        this.formateur = formateur;
-    }
-
-    public Collection<Ressource> getRessources() {
-        return ressources;
-    }
-
-    public void setRessources(Collection<Ressource> ressources) {
-        this.ressources = ressources;
-    }
-
-    public Collection<Chapitre> getChapitres() {
-        return chapitres;
-    }
-
-    public void setChapitres(Collection<Chapitre> chapitres) {
-        this.chapitres = chapitres;
-    }
 }

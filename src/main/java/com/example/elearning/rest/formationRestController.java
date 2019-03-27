@@ -58,6 +58,11 @@ public class formationRestController {
         formation.setDuree(formationDetails.getDuree());
         formation.setNombremodules(formationDetails.getNombremodules());
         formation.setNomformation(formationDetails.getNomformation());
+        //***************
+        formation.setApprenants(formationDetails.getApprenants());
+        formation.setModules(formationDetails.getModules());
+        formation.setFormateurs(formationDetails.getFormateurs());
+        //***************
         final Formation updatedFormation = formationRepository.save(formation);
         return ResponseEntity.ok(updatedFormation);
     }

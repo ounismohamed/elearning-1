@@ -1,5 +1,8 @@
 package com.example.elearning;
 
+import com.example.elearning.entities.Apprenant;
+import com.example.elearning.entities.Formateur;
+import com.example.elearning.entities.Profile;
 import com.example.elearning.repositories.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
