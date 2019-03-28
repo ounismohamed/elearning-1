@@ -15,9 +15,42 @@ public class Chapitre implements Serializable {
     private int idchapitre;
     private String titre;
     private String description;
+
     @ManyToOne
     @JoinColumn(name = "module_id")
     private Module module;
+
+    public int getIdchapitre() {
+        return idchapitre;
+    }
+
+    public void setIdchapitre(int idchapitre) {
+        this.idchapitre = idchapitre;
+    }
+
+    public String getTitre() {
+        return titre;
+    }
+
+    public void setTitre(String titre) {
+        this.titre = titre;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Module getModule() {
+        return module;
+    }
+
+    public void setModule(Module module) {
+        this.module = module;
+    }
 
     public Chapitre(String titre, String description, Module module) {
         this.titre = titre;
