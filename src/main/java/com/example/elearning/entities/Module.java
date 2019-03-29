@@ -1,5 +1,6 @@
 package com.example.elearning.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Getter @Setter @NoArgsConstructor
 @Entity
+@JsonFormat(shape=JsonFormat.Shape.ARRAY)
 public class Module implements Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)

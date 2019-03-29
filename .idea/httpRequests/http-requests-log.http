@@ -1,3 +1,89 @@
+PUT http://localhost:8080/module/32
+Accept: */*
+Content-Type: application/json
+
+{   "id":32,"nom":"mathAPP",     "description":"Mathematique Appliquée",     "duree":15,    "nbrchapitre":3,     "typeressource":"Docs",     "formation":[],     "formateur":[],    "ressources":[],     "chapitres":[],     "apprenants":[], }
+
+<> 2019-03-29T041410.400.json
+
+###
+
+PUT http://localhost:8080/module/32
+Accept: */*
+Content-Type: application/json
+
+{   "id":32,"nom":"mathAPP",     "description":"Mathematique Appliquée",     "duree":15,    "nbrchapitre":3,     "typeressource":"Docs",     "formation":[],     "formateur":[],    "ressources":[],     "chapitres":[],     "apprenants":[], }
+
+<> 2019-03-29T041243.400.json
+
+###
+
+PUT http://localhost:8080/module/32
+Accept: */*
+Content-Type: application/json
+
+{   "id":32,"nom":"mathAPP",     "description":"Mathematique Appliquée",     "duree":15,    "nbrchapitre":3,     "typeressource":"Docs",     "formation":[],     "formateur":[],    "ressources":[],     "chapitres":[],     "apprenants":[], }
+
+###
+
+PUT http://localhost:8080/module/32
+Accept: */*
+Content-Type: application/json
+
+[{   "id":32,"nom":"mathAPP",    "description":"Mathematique Appliquée",    "duree":15,   "nbrchapitre":3,   "typeressource":"Docs",   "formation":[],   "formateur":[],   "ressources":[],   "chapitres":[],   "apprenants":[], } ]
+
+<> 2019-03-29T040943.400.json
+
+###
+
+PUT http://localhost:8080/module/32
+Accept: */*
+Content-Type: application/json
+
+[{   "id":32,"nom":"mathAPP",    "description":"Mathematique Appliquée",    "duree":15,   "nbrchapitre":3,   "typeressource":"Docs",   "formation":[],   "formateur":[],   "ressources":[],   "chapitres":[],   "apprenants":[], } ]
+
+<> 2019-03-29T035708.400.json
+
+###
+
+PUT http://localhost:8080/module/32
+Accept: */*
+Content-Type: application/json
+
+[{"id":32,"nom":"mathAPP", "description":"Mathematique Appliquée", "duree":15,"nbrchapitre":3, "typeressource":"Docs", "formation":{"idformation":1030,"nomformation":"GLSI","duree":24,"discipline":"Dev","description":"GLSI","nombremodules":30,"modules":[],"apprenants":[],"formateurs":[]}, "formateur":{"id":10,"identifiant":"mohamed","motdepasse":"123","nom":"Ounis Mohamed","email":"ounismohamed@gmail.com","anciennete":10,"domaineExpertise":"10","ressources":[],"modules":[],"formations":[]}, "ressources":[], "chapitres":[], "apprenants":[]} ]
+
+<> 2019-03-29T034610.400.json
+
+###
+
+PUT http://localhost:8080/module/32
+Accept: */*
+Cache-Control: no-cache
+
+[{"id":32,"nom":"mathAPP", "description":"Mathematique Appliquée", "duree":15,"nbrchapitre":3, "typeressource":"Docs", "formation":{"idformation":1030,"nomformation":"GLSI","duree":24,"discipline":"Dev","description":"GLSI","nombremodules":30,"modules":[],"apprenants":[],"formateurs":[]}, "formateur":{"id":10,"identifiant":"mohamed","motdepasse":"123","nom":"Ounis Mohamed","email":"ounismohamed@gmail.com","anciennete":10,"domaineExpertise":"10","ressources":[],"modules":[],"formations":[]}, "ressources":[], "chapitres":[], "apprenants":[]} ]
+
+<> 2019-03-29T034410.415.json
+
+###
+
+PUT http://localhost:8080/module
+Accept: */*
+Cache-Control: no-cache
+
+[{"id":32,"nom":"mathAPP", "description":"Mathematique Appliquée", "duree":15,"nbrchapitre":3, "typeressource":"Docs", "formation":{"idformation":1030,"nomformation":"GLSI","duree":24,"discipline":"Dev","description":"GLSI","nombremodules":30,"modules":[],"apprenants":[],"formateurs":[]}, "formateur":{"id":10,"identifiant":"mohamed","motdepasse":"123","nom":"Ounis Mohamed","email":"ounismohamed@gmail.com","anciennete":10,"domaineExpertise":"10","ressources":[],"modules":[],"formations":[]}, "ressources":[], "chapitres":[], "apprenants":[]} ]
+
+<> 2019-03-29T034248.405.json
+
+###
+
+PUT http://localhost:8080/module
+Accept: */*
+Cache-Control: no-cache
+
+[{"id":32,"nom":"mathAPP", "description":"Mathematique Appliquée", "duree":15,"nbrchapitre":3, "typeressource":"Docs", "formation":{"idformation":1030,"nomformation":"GLSI","duree":24,"discipline":"Dev","description":"GLSI","nombremodules":30,"modules":[],"apprenants":[],"formateurs":[]}, "formateur":{"id":10,"identifiant":"mohamed","motdepasse":"123","nom":"Ounis Mohamed","email":"ounismohamed@gmail.com","anciennete":10,"domaineExpertise":"10","ressources":[],"modules":[],"formations":[]}, "ressources":[], "chapitres":[], "apprenants":[]} ]
+
+###
+
 GET http://localhost:8080/module
 Accept: */*
 Cache-Control: no-cache

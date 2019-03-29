@@ -66,9 +66,8 @@ public class moduleRestController {
         module.setRessources(moduleDetails.getRessources());
         module.setApprenants(moduleDetails.getApprenants());
         //***************
-        Module m1 = new Module("Math", "mathematique",10, 5,"livres", null, null);
-        moduleRepository.save(m1);
-        final Module updatedModule = moduleRepository.save(module);
+
+               final Module updatedModule = moduleRepository.save(module);
         return ResponseEntity.ok(updatedModule);
     }
 
