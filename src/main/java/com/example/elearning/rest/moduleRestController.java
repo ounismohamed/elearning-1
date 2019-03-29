@@ -1,5 +1,7 @@
 package com.example.elearning.rest;
 
+import com.example.elearning.entities.Formateur;
+import com.example.elearning.entities.Formation;
 import com.example.elearning.entities.Module;
 import com.example.elearning.repositories.ModuleRepository;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -8,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Null;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,6 +66,8 @@ public class moduleRestController {
         module.setRessources(moduleDetails.getRessources());
         module.setApprenants(moduleDetails.getApprenants());
         //***************
+        Module m1 = new Module("Math", "mathematique",10, 5,"livres", null, null);
+        moduleRepository.save(m1);
         final Module updatedModule = moduleRepository.save(module);
         return ResponseEntity.ok(updatedModule);
     }

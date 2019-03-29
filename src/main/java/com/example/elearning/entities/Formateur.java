@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
 
-@Getter @Setter
+@Getter @Setter @NoArgsConstructor
 @Entity
 @DiscriminatorValue("F")
 public class Formateur extends Profile {

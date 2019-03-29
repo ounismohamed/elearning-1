@@ -56,6 +56,7 @@ public class chapitreRestController {
         chapitre.setModule(chapitreDetails.getModule());
         chapitre.setIdchapitre(chapitreDetails.getIdchapitre());
         chapitre.setTitre(chapitreDetails.getTitre());
+
         final Chapitre updatedChapitre = chapitreRepository.save(chapitre);
         return ResponseEntity.ok(updatedChapitre);
     }
