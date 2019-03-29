@@ -14,6 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("formation")
+@CrossOrigin
 public class formationRestController {
 
     //Actions

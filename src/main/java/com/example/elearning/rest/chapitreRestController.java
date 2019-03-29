@@ -14,6 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping ("chapitre")
+@CrossOrigin
 public class chapitreRestController {
 
     //Actions
