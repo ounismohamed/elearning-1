@@ -28,9 +28,9 @@ public class Module implements Serializable {
     @ManyToOne
     @JoinColumn(name = "formateur_id")
     private Formateur formateur;
-    @OneToMany(mappedBy = "id",fetch = FetchType.LAZY) //FetchType.LAZY: lazy loading only on demand
+    @OneToMany(mappedBy = "id",fetch = FetchType.LAZY, cascade = CascadeType.ALL) //FetchType.LAZY: lazy loading only on demand
     private List<Ressource> ressources;
-    @OneToMany(mappedBy = "idchapitre",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "idchapitre",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Chapitre> chapitres;
     @ManyToMany(mappedBy = "modules",fetch = FetchType.LAZY)
     private List<Apprenant> apprenants;

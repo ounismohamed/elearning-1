@@ -17,16 +17,17 @@ public class Formation implements Serializable {
     private int idformation;
     @Column(nullable=false)
     private String nomformation;
+    @Column(nullable=false)
     private int duree;
     private String discipline;
     private String description;
     private int nombremodules;
-    @OneToMany(mappedBy = "id",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "id",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Module> modules;
 
-    @ManyToMany(mappedBy = "formations",fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "formations",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Apprenant> apprenants;
-    @ManyToMany(mappedBy = "formations",fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "formations",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Formateur> formateurs;
 
     public Formation(String nomformation, int duree, String discipline, String description, int nombremodules) {

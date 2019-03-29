@@ -17,6 +17,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("module")
+@CrossOrigin
 public class moduleRestController {
     //Actions
     private ModuleRepository moduleRepository;
@@ -27,6 +28,7 @@ public class moduleRestController {
 
     @GetMapping()
     public List<Module> allModules(){
+
         return moduleRepository.findAll();
     }
 
