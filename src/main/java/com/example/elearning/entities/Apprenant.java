@@ -2,12 +2,13 @@ package com.example.elearning.entities;
 
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Getter @Setter
+@Getter @Setter @NoArgsConstructor
 @Entity
 @DiscriminatorValue("A")
 public class Apprenant extends Profile {

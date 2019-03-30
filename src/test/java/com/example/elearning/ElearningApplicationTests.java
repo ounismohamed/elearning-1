@@ -11,6 +11,13 @@ public class ElearningApplicationTests {
 
     @Test
     public void contextLoads() {
+
+        //TODO JUNIT TESTS FOR SERVICE METHODS
+
+        //TODO Mockito TESTS FOR DATABASE TRANSACTIONS
+
+
+
     }
 
 }

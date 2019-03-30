@@ -35,13 +35,14 @@ public class moduleRestController {
     @GetMapping(path = "/{id}")
     public ResponseEntity<Module> findById(@PathVariable("id") int idModule)
             throws ResourceNotFoundException {
+
         Module module = moduleRepository.findById(idModule)
                 .orElseThrow(() -> new ResourceNotFoundException("Aucun module trouvé avec : " + idModule));
         return ResponseEntity.ok().body(module);
     }
 
     @PostMapping
-    public ResponseEntity<Module> addModule(@Valid @RequestBody Module module){
+    public ResponseEntity<Module> addModule(@Valid @RequestBody Module module) {
         try {
             moduleRepository.save(module);
             return new ResponseEntity<Module>(module, HttpStatus.CREATED);
@@ -54,6 +55,7 @@ public class moduleRestController {
     @PutMapping("/{id}")
     public ResponseEntity<Module> updateModule(@PathVariable("id") int idModule, @RequestBody Module moduleDetails)
             throws ResourceNotFoundException {
+
         Module module = moduleRepository.findById(idModule)
                 .orElseThrow(() -> new ResourceNotFoundException("Aucun module trouvé avec : " + idModule));
         module.setDescription(moduleDetails.getDescription());

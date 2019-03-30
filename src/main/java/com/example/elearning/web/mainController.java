@@ -9,4 +9,9 @@ public class mainController {
     public String home(){
         return "accueil";
     }
+    @GetMapping("/test")
+    public String test(){
+        return "template1";
+    }
+
 }
