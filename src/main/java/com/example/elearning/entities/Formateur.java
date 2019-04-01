@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
 
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter
 @Entity
 @DiscriminatorValue("F")
 public class Formateur extends Profile {
@@ -33,5 +33,7 @@ public class Formateur extends Profile {
         this.domaineExpertise = domaineExpertise;
     }
 
-
+    public Formateur(String identifiant, String motdepasse, String nom, String email) {
+        super(identifiant, motdepasse, nom, email);
+    }
 }
