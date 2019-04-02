@@ -1,3 +1,73 @@
+GET http://localhost:8080/module
+Accept: */*
+Content-Type: application/json
+
+{     "id":32,   "nom":"mathAPP",        "description":"Mathematique Appliquée",   "duree":15,    "nbrchapitre":3,     "typeressource":"Docs",      "formation":[],       "formateur":[],     "ressources":[],      "chapitres":[],     "apprenants":[] }
+
+<> 2019-04-02T062253.200.json
+
+###
+
+GET http://localhost:8080/module
+Accept: */*
+Content-Type: application/json
+
+{     "id":32,   "nom":"mathAPP",        "description":"Mathematique Appliquée",   "duree":15,    "nbrchapitre":3,     "typeressource":"Docs",      "formation":[],       "formateur":[],     "ressources":[],      "chapitres":[],     "apprenants":[] }
+
+<> 2019-04-02T062150.200.json
+
+###
+
+GET http://localhost:8080/module/31
+Accept: */*
+Content-Type: application/json
+
+{     "id":32,   "nom":"mathAPP",        "description":"Mathematique Appliquée",   "duree":15,    "nbrchapitre":3,     "typeressource":"Docs",      "formation":[],       "formateur":[],     "ressources":[],      "chapitres":[],     "apprenants":[] }
+
+<> 2019-04-02T062138.200.json
+
+###
+
+PUT http://localhost:8080/module/31
+Accept: */*
+Content-Type: application/json
+
+{     "id":32,   "nom":"mathAPP",        "description":"Mathematique Appliquée",   "duree":15,    "nbrchapitre":3,     "typeressource":"Docs",      "formation":[],       "formateur":[],     "ressources":[],      "chapitres":[],     "apprenants":[] }
+
+<> 2019-04-02T062101.400.json
+
+###
+
+GET http://localhost:8080/module
+Accept: */*
+Content-Type: application/json
+
+{     "id":32,   "nom":"mathAPP",        "description":"Mathematique Appliquée",   "duree":15,    "nbrchapitre":3,     "typeressource":"Docs",      "formation":[],       "formateur":[],     "ressources":[],      "chapitres":[],     "apprenants":[] }
+
+<> 2019-04-02T061338.200.json
+
+###
+
+GET http://localhost:8080/module
+Accept: */*
+Content-Type: application/json
+
+{     "id":32,   "nom":"mathAPP",        "description":"Mathematique Appliquée",   "duree":15,    "nbrchapitre":3,     "typeressource":"Docs",      "formation":[],       "formateur":[],     "ressources":[],      "chapitres":[],     "apprenants":[] }
+
+<> 2019-04-02T061255.500.json
+
+###
+
+GET http://localhost:8080/module
+Accept: */*
+Content-Type: application/json
+
+{     "id":32,   "nom":"mathAPP",        "description":"Mathematique Appliquée",   "duree":15,    "nbrchapitre":3,     "typeressource":"Docs",      "formation":[],       "formateur":[],     "ressources":[],      "chapitres":[],     "apprenants":[] }
+
+<> 2019-04-02T061119.500.json
+
+###
+
 PUT http://localhost:8080/module/32
 Accept: */*
 Content-Type: application/json

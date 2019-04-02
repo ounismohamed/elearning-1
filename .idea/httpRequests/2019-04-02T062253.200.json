@@ -1,0 +1,36 @@
+[
+  {
+    "id": 31,
+    "nom": "Math",
+    "description": "Mathematiques",
+    "duree": 12,
+    "nbrchapitre": 5,
+    "typeressource": "Livres",
+    "formation": {
+      "idformation": 1030,
+      "nomformation": "GLSI",
+      "duree": 24,
+      "discipline": "Dev",
+      "description": "GLSI",
+      "nombremodules": 30,
+      "modules": [],
+      "apprenants": [],
+      "formateurs": []
+    },
+    "formateur": {
+      "id": 10,
+      "identifiant": "mohamed",
+      "motdepasse": "123",
+      "nom": "Ounis Mohamed",
+      "email": "ounismohamed@gmail.com",
+      "anciennete": 10,
+      "domaineExpertise": "10",
+      "ressources": [],
+      "modules": [],
+      "formations": []
+    },
+    "ressources": [],
+    "chapitres": [],
+    "apprenants": []
+  }
+]

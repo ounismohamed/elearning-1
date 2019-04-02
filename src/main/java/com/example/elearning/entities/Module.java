@@ -12,7 +12,7 @@ import java.util.List;
 
 @Getter @Setter @NoArgsConstructor
 @Entity
-@JsonFormat(shape=JsonFormat.Shape.ARRAY)
+/*@JsonFormat(shape=JsonFormat.Shape.ARRAY)*/
 public class Module implements Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
