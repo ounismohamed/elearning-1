@@ -14,6 +14,7 @@ import java.io.Serializable;
 public abstract class Profile implements Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
+//    @GeneratedValue (strategy = GenerationType.AUTO)
     private int id;
     private String identifiant;
     private String motdepasse;

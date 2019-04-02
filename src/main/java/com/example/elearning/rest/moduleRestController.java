@@ -19,7 +19,9 @@ import java.util.Map;
 @RequestMapping("module")
 @CrossOrigin
 public class moduleRestController {
+
     //Actions
+
     private ModuleRepository moduleRepository;
 
     public moduleRestController(ModuleRepository moduleRepository) {
@@ -27,7 +29,7 @@ public class moduleRestController {
     }
 
     @GetMapping()
-    public List<Module> allModules(){
+    public List<Module> allModules() {
 
         return moduleRepository.findAll();
     }
@@ -46,8 +48,7 @@ public class moduleRestController {
         try {
             moduleRepository.save(module);
             return new ResponseEntity<Module>(module, HttpStatus.CREATED);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return new ResponseEntity<Module>(HttpStatus.NOT_ACCEPTABLE);
         }
     }
@@ -71,17 +72,17 @@ public class moduleRestController {
         module.setApprenants(moduleDetails.getApprenants());
         //***************
 
-               final Module updatedModule = moduleRepository.save(module);
+        final Module updatedModule = moduleRepository.save(module);
         return ResponseEntity.ok(updatedModule);
     }
 
     @DeleteMapping("/{id}")
-    public Map<String,Boolean> deleteModule(@PathVariable("id") int idModule) throws Exception{
+    public Map<String, Boolean> deleteModule(@PathVariable("id") int idModule) throws Exception {
         Module module = moduleRepository.findById(idModule)
                 .orElseThrow(() -> new ResourceNotFoundException("Aucun module trouvé avec : " + idModule));
         moduleRepository.delete(module);
-        Map<String,Boolean> response = new HashMap<>();
-        response.put("Module supprimé",Boolean.TRUE);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("Module supprimé", Boolean.TRUE);
         return response;
     }
 

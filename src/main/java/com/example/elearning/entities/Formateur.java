@@ -5,25 +5,26 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.List;
 
-@Getter @Setter @NoArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @DiscriminatorValue("F")
 public class Formateur extends Profile {
     private int anciennete;
     private String domaineExpertise;
-    @OneToMany(mappedBy = "id",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Ressource> ressources;
-    @OneToMany(mappedBy = "id",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "id", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Module> modules;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
             name = "Formateur_has_formation",
-            joinColumns = { @JoinColumn(name = "idformateur") },
-            inverseJoinColumns = { @JoinColumn(name = "idformation") }
+            joinColumns = {@JoinColumn(name = "idformateur")},
+            inverseJoinColumns = {@JoinColumn(name = "idformation")}
     )
     private List<Formation> formations;
 
