@@ -16,16 +16,16 @@ public class Apprenant extends Profile {
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "Apprenant_has_formation",
-            joinColumns = { @JoinColumn(name = "idapprenant") },
-            inverseJoinColumns = { @JoinColumn(name = "idformation") }
+            joinColumns = { @JoinColumn(name = "idapprenant",referencedColumnName = "id")},
+            inverseJoinColumns = { @JoinColumn(name = "idformation",referencedColumnName = "idformation") }
     )
     private List<Formation> formations;
 
     @ManyToMany(cascade = { CascadeType.ALL })
     @JoinTable(
             name = "Apprenant_has_module",
-            joinColumns = { @JoinColumn(name = "idapprenant") },
-            inverseJoinColumns = { @JoinColumn(name = "idmodule") }
+            joinColumns = { @JoinColumn(name = "idapprenant",referencedColumnName = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "idmodule",referencedColumnName = "id") }
     )
     private List<Module> modules;
 
