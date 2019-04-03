@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html  xmlns:th="http://www.thymeleaf.org"
        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
-       xmlns="http://www.w3.org/1999/xhtml"
-       layout:decorator="template1" >
+       xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
 
@@ -22,12 +20,18 @@
             <ul class="nav navbar-nav navbar-right">
                 <li> <a th:href="@{/accueil}"> Accueil </a> </li>
                 <li> <a th:href="@{/apropos}"> A propos </a> </li>
-                <li> <a th:href="@{/services}">Services</a> </li>
-                <li> <a th:href="@{/formations}">Formations</a> </li>
+                <li> <a th:href="@{/formations}">Catalogue des formations</a> </li>
                 <li> <a th:href="@{/contact}">Contact</a> </li>
             </ul>
-
+            <ul class="nav navbar-nav navbar-left">
+                <li> <a th:href="@{/inscription}"> S'inscrire </a> </li>
+                <li> <a th:href="@{/identification}"> S'identifier </a> </li>
+            </ul>
+            <div id="logo" style="text-align: center;">
+            <img src="../static/bebrighter.png" width="200" th:src="@{bebrighter.png}" alt="logo"/>
+            </div>
         </div>
+
     </div>
 
 </header>
@@ -41,7 +45,6 @@
         </div>
         </div>
     </div>
-
 </div>
 
 </body>

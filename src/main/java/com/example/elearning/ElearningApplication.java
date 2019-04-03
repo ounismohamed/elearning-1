@@ -26,6 +26,8 @@ public class ElearningApplication implements CommandLineRunner {
         Profile apr1=profileRepository.save(new Apprenant("rahma01","rahma01","Rahma AA","rahma@gmail.com"));
         Profile apr2=profileRepository.save(new Apprenant("mohamed01","mohamed01","Mohamed CC","mohamed@gmail.com"));
 */
+
+
     }
 }
 
