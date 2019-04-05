@@ -15,6 +15,7 @@ import java.util.List;
 public class Formateur extends Profile {
     private int anciennete;
     private String domaineExpertise;
+
     @OneToMany(mappedBy = "id", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Ressource> ressources;
     @OneToMany(mappedBy = "id", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

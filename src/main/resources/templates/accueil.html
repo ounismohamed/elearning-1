@@ -16,9 +16,8 @@
 </head>
 <body>
 <header>
-    <div class="navbar navbar-inverse">    <!--  class="navbar navbar-default" -->
+    <div class="navbar navbar-inverse navbar-dark bg-dark">    <!--  class="navbar navbar-default" -->
         <div class="container-fluid">
-
             <ul class="nav navbar-nav navbar-left">
                 <li> <a th:href="@{/accueil}"> Accueil </a> </li>
                 <li> <a th:href="@{/inscription}"> S'inscrire </a> </li>
@@ -39,17 +38,15 @@
     </div>
 
 </header>
-<div>
-    <div class="col-md-6"> <!--  càd , la moitier -->
-
-        <div class="panel panel-primary">A TEST
-        <div class="panel-heading"> A TEST </div>
-        <div class="panel-body">
-            <label> Test: </label>
-        </div>
-        </div>
-    </div>
+<div id="icon" style="text-align: center;">
+    <img src="../static/icon.png" width="200" th:src="@{icon.png}" alt="icon"/>
 </div>
+
+    <div class="slogan" style="text-align: center;">
+        <h1>Bienvenue à <span>Be Brighter</span> e-learning plateforme</h1>
+        <h2>Contenu de haute qualité avec support fourni</h2>
+    </div>
+
 
 </body>
 </html>
