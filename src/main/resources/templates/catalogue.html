@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.6/css/bootstrap.css">
+    <link rel="stylesheet" href="myStyle.css">
+    <!--<link rel="stylesheet" href="style.css">-->
+    <script src="webjars/jquery/3.2.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../static/favicon.ico">
+    <meta charset="UTF-8"/>
+    <title>Be Brighter</title>
+</head>
+
+<body>
+
+<!--Navbar-->
+
+<header>
+    <div class="bg-black">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a th:href="@{/accueil}"> Accueil </a></li>
+                <li><a th:href="@{/inscription}"> S'inscrire </a></li>
+                <li><a th:href="@{/identification}"> S'identifier </a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a th:href="@{/apropos}"> A propos </a></li>
+                <li><a th:href="@{/catalogue}">Catalogue des formations</a></li>
+                <li><a th:href="@{/contact}">Contact</a></li>
+            </ul>
+
+            <div id="logo" style="text-align: center;">
+                <img src="../static/bebrighter.png" width="200" th:src="@{bebrighter.png}" alt="logo"/>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div layout:fragment="content">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Consultation d'une formation</div>
+            <div class="panel-body">
+                <form th:action="@{/consulterFormation}" method="get">
+                    <div>
+                        <label>ID formation: </label>
+                        <input type="text" name="idFormation"/>
+                        <button type="submit" class="btn btn-primary">OK</button>
+                    </div>
+                </form>
+                <div class="text-danger" th:if="${exception}" th:text="${exception.getMessage()}"></div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary" th:if="${formation}">
+            <div class="panel-heading">Informations sur la formation</div>
+            <div class="panel-body">
+                <div>
+                    <label>Code formation:</label>
+                    <label th:text="${formation.get().getIdformation()}"></label>
+                </div>
+                <div>
+                    <label>Nom de la formation:</label>
+                    <label th:text="${formation.get().getNomformation()}"></label>
+                </div>
+                <div>
+                    <label>Description de la formation:</label>
+                    <label th:text="${formation.get().getDescription()}"></label>
+                </div>
+                <div>
+                    <label>Discipline de la formation:</label>
+                    <label th:text="${formation.get().getDiscipline()}"></label>
+                </div>
+                <div>
+                    <label>Duree de la formation:</label>
+                    <label th:text="${formation.get().getDuree()}"></label>
+                </div>
+                <div>
+                    <label>Nombre des modules:</label>
+                    <label th:text="${formation.get().getNombremodules()}"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="col-md-6">
+    <!--<div class="panel panel-primary">-->
+    <!--<div class="panel-heading">Liste des formations</div>-->
+    <!--<div class="panel-body">-->
+    <!--<form th:action="@{/listFormation}" method="get">-->
+    <!--<div>-->
+    <!--<label>Toutes les formations disponibles </label>-->
+    <!--<button type="submit" class="btn btn-primary">Chercher</button>-->
+    <!--</div>-->
+    <!--<table class="table table-striped">-->
+    <!--<tr>-->
+    <!--<th>Code formation</th>-->
+    <!--<th>Nom</th>-->
+    <!--<th>Duree</th>-->
+    <!--</tr>-->
+    <!--<tr th:each="f:${listFormation}">-->
+    <!--<td th:text="${f.getIdformation()}"></td>-->
+    <!--<td th:text="${f.getNomformation()}"></td>-->
+    <!--<td th:text="${f.getDuree()}"></td>-->
+    <!--</tr>-->
+    <!--</table>-->
+    <!--</form>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">Toutes nos formations sont disponibles par ici: </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>Code formation</th>
+                    <th>Nom</th>
+                </tr>
+                <tr th:each="f:${listFormation}">
+                    <td th:text="${f.idformation}"></td>
+                    <td th:text="${f.getNomformation()}"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="container">
+            <ul class="nav nav-pills">
+                <li th:each="p:${pages}">
+                    <a th:text="${p}" th:href="@{consulterFormation(page=${p})}"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</div>
+
+</body>
+</html>

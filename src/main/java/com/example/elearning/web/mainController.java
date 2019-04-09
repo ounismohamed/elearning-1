@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.List;
 import java.util.Optional;
 
 
@@ -20,9 +19,9 @@ public class mainController {
     @Autowired
     private FormationRepository formationRepository;
 
-    @GetMapping("/accueil")
+    @GetMapping("/catalogue")
     public String home(){
-        return "accueil";
+        return "catalogue";
     }
 
     @GetMapping("/consulterFormation")
@@ -32,12 +31,39 @@ public class mainController {
             Page<Formation> formationPage = iElearning.listFormation(0,5);
             model.addAttribute("listFormation",formationPage.getContent());
             model.addAttribute("formation",formation);
+            int pageCount = formationPage.getTotalPages();
+            int[] pages = new int[pageCount];
+            for (int i=0;i<pageCount;i++) pages[i]=i;
+            model.addAttribute("pages",pages);
         }
         catch (Exception e){
             model.addAttribute("exception",e);      //exception stockee dans le model, sera affiche dans la vue
         }
+        return "catalogue";
+    }
+    @GetMapping("/apropos")
+    public String apropos(){
+        return "apropos";
+    }
+
+    @GetMapping("/accueil")
+    public String index(){
         return "accueil";
     }
 
+    @GetMapping("/inscription")
+    public String inscription(){
+        return "inscription";
+    }
+
+    @GetMapping("/identification")
+    public String identification(){
+        return "identification";
+    }
+
+    @GetMapping("/contact")
+    public String contact(){
+        return "contact";
+    }
 
 }
