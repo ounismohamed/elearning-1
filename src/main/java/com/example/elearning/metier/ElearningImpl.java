@@ -16,7 +16,11 @@ public class ElearningImpl implements IElearning {
     private FormationRepository formationRepository;
     @Override
     public Optional<Formation> consulterFormation(int idFormation) {
-        Optional<Formation> formation=formationRepository.findById(idFormation);
+        Optional<Formation> formation=null;
+        if (formationRepository.existsById(idFormation)) {
+
+            formation = formationRepository.findById(idFormation);
+        }
         if (formation == null) throw new RuntimeException("Formation introuvable");
         return formation;
     }
