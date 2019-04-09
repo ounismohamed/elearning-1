@@ -1,52 +1,108 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org"
-       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-       xmlns="http://www.w3.org/1999/xhtml">
+
+<html layout:decorator="template"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-
-
     <meta charset="UTF-8">
     <link rel="stylesheet" href="webjars/bootstrap/3.3.6/css/bootstrap.css">
     <link rel="stylesheet" href="myStyle.css">
+    <!--<link rel="stylesheet" href="style.css">-->
     <script src="webjars/jquery/3.2.1/jquery.min.js"></script>
     <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link rel="shortcut icon" type="image/png" href="../static/favicon.ico">
     <meta charset="UTF-8"/>
     <title>Accueil-Be Brighter</title>
 </head>
+
 <body>
+
+<!--Navbar-->
+
 <header>
-    <div class="navbar navbar-inverse navbar-dark bg-dark">    <!--  class="navbar navbar-default" -->
-        <div class="container-fluid">
-            <ul class="nav navbar-nav navbar-left">
-                <li> <a th:href="@{/accueil}"> Accueil </a> </li>
-                <li> <a th:href="@{/inscription}"> S'inscrire </a> </li>
-                <li> <a th:href="@{/identification}"> S'identifier </a> </li>
-            </ul>
+    <div class="bg-black">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav navbar-left">
+            <li><a th:href="@{/accueil}"> Accueil </a></li>
+            <li><a th:href="@{/inscription.html}"> S'inscrire </a></li>
+            <li><a th:href="@{/identification}"> S'identifier </a></li>
+        </ul>
 
-            <ul class="nav navbar-nav navbar-right">
-                <li> <a th:href="@{/apropos}"> A propos </a> </li>
-                <li> <a th:href="@{/formations}">Catalogue des formations</a> </li>
-                <li> <a th:href="@{/contact}">Contact</a> </li>
-            </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a th:href="@{/apropos}"> A propos </a></li>
+            <li><a th:href="@{/formations}">Catalogue des formations</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
+        </ul>
 
-            <div id="logo" style="text-align: center;">
+        <div id="logo" style="text-align: center;">
             <img src="../static/bebrighter.png" width="200" th:src="@{bebrighter.png}" alt="logo"/>
+        </div>
+    </div>
+    </div>
+</header>
+
+<!--<div layout:fragment="content">-->
+<!--<div id="icon" style="text-align: center;">-->
+<!--<img src="../static/icon.png" width="200" th:src="@{icon.png}" alt="icon"/>-->
+<!--</div>-->
+
+<!--<div class="slogan" style="text-align: center;">-->
+<!--<h1>Bienvenue à <span>Be Brighter</span> e-learning plateforme</h1>-->
+<!--<h2>Contenu de haute qualité avec support fourni</h2>-->
+<!--</div>-->
+<!--</div>-->
+
+
+<div layout:fragment="content">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Consultation d'une formation</div>
+            <div class="panel-body">
+                <form th:action="@{/consulterFormation}" method="get">
+                    <div>
+                        <label>ID formation: </label>
+                        <input type="text" name="idFormation"/>
+                        <button type="submit" class="btn btn-primary">OK</button>
+                    </div>
+                </form>
+                <div class="text-danger" th:if="${exception}" th:text="${exception.getMessage()}"></div>
             </div>
         </div>
 
+        <div class="panel panel-primary" th:if="${formation}">
+            <div class="panel-heading">Informations sur la formation</div>
+            <div class="panel-body">
+                <div>
+                    <label>Code formation:</label>
+                    <label th:text="${formation.get().getIdformation()}"></label>
+                </div>
+                <div>
+                    <label>Description de la formation:</label>
+                    <label th:text="${formation.get().getDescription()}"></label>
+                </div>
+                <div>
+                    <label>Discipline de la formation:</label>
+                    <label th:text="${formation.get().getDiscipline()}"></label>
+                </div>
+                <div>
+                    <label>Duree de la formation:</label>
+                    <label th:text="${formation.get().getDuree()}"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Liste des formations</div>
+            <div class="panel-body">
+            </div>
+        </div>
+
+
     </div>
 
-</header>
-<div id="icon" style="text-align: center;">
-    <img src="../static/icon.png" width="200" th:src="@{icon.png}" alt="icon"/>
 </div>
-
-    <div class="slogan" style="text-align: center;">
-        <h1>Bienvenue à <span>Be Brighter</span> e-learning plateforme</h1>
-        <h2>Contenu de haute qualité avec support fourni</h2>
-    </div>
-
 
 </body>
 </html>
