@@ -22,37 +22,25 @@
 
 <header>
     <div class="bg-black">
-    <div class="container-fluid">
-        <ul class="nav navbar-nav navbar-left">
-            <li><a th:href="@{/accueil}"> Accueil </a></li>
-            <li><a th:href="@{/inscription.html}"> S'inscrire </a></li>
-            <li><a th:href="@{/identification}"> S'identifier </a></li>
-        </ul>
+        <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a th:href="@{/accueil}"> Accueil </a></li>
+                <li><a th:href="@{/inscription.html}"> S'inscrire </a></li>
+                <li><a th:href="@{/identification}"> S'identifier </a></li>
+            </ul>
 
-        <ul class="nav navbar-nav navbar-right">
-            <li><a th:href="@{/apropos}"> A propos </a></li>
-            <li><a th:href="@{/formations}">Catalogue des formations</a></li>
-            <li><a th:href="@{/contact}">Contact</a></li>
-        </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a th:href="@{/apropos}"> A propos </a></li>
+                <li><a th:href="@{/formations}">Catalogue des formations</a></li>
+                <li><a th:href="@{/contact}">Contact</a></li>
+            </ul>
 
-        <div id="logo" style="text-align: center;">
-            <img src="../static/bebrighter.png" width="200" th:src="@{bebrighter.png}" alt="logo"/>
+            <div id="logo" style="text-align: center;">
+                <img src="../static/bebrighter.png" width="200" th:src="@{bebrighter.png}" alt="logo"/>
+            </div>
         </div>
     </div>
-    </div>
 </header>
-
-<!--<div layout:fragment="content">-->
-<!--<div id="icon" style="text-align: center;">-->
-<!--<img src="../static/icon.png" width="200" th:src="@{icon.png}" alt="icon"/>-->
-<!--</div>-->
-
-<!--<div class="slogan" style="text-align: center;">-->
-<!--<h1>Bienvenue à <span>Be Brighter</span> e-learning plateforme</h1>-->
-<!--<h2>Contenu de haute qualité avec support fourni</h2>-->
-<!--</div>-->
-<!--</div>-->
-
 
 <div layout:fragment="content">
     <div class="col-md-6">
@@ -78,6 +66,10 @@
                     <label th:text="${formation.get().getIdformation()}"></label>
                 </div>
                 <div>
+                    <label>Nom de la formation:</label>
+                    <label th:text="${formation.get().getNomformation()}"></label>
+                </div>
+                <div>
                     <label>Description de la formation:</label>
                     <label th:text="${formation.get().getDescription()}"></label>
                 </div>
@@ -89,18 +81,55 @@
                     <label>Duree de la formation:</label>
                     <label th:text="${formation.get().getDuree()}"></label>
                 </div>
+                <div>
+                    <label>Nombre des modules:</label>
+                    <label th:text="${formation.get().getNombremodules()}"></label>
+                </div>
             </div>
         </div>
     </div>
-    <div class="col-md-6">
-        <div class="panel panel-primary">
-            <div class="panel-heading">Liste des formations</div>
-            <div class="panel-body">
-            </div>
+
+<div class="col-md-6">
+    <!--<div class="panel panel-primary">-->
+    <!--<div class="panel-heading">Liste des formations</div>-->
+    <!--<div class="panel-body">-->
+    <!--<form th:action="@{/listFormation}" method="get">-->
+    <!--<div>-->
+    <!--<label>Toutes les formations disponibles </label>-->
+    <!--<button type="submit" class="btn btn-primary">Chercher</button>-->
+    <!--</div>-->
+    <!--<table class="table table-striped">-->
+    <!--<tr>-->
+    <!--<th>Code formation</th>-->
+    <!--<th>Nom</th>-->
+    <!--<th>Duree</th>-->
+    <!--</tr>-->
+    <!--<tr th:each="f:${listFormation}">-->
+    <!--<td th:text="${f.getIdformation()}"></td>-->
+    <!--<td th:text="${f.getNomformation()}"></td>-->
+    <!--<td th:text="${f.getDuree()}"></td>-->
+    <!--</tr>-->
+    <!--</table>-->
+    <!--</form>-->
+    <!--</div>-->
+    <!--</div>-->
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">Toutes nos formations sont disponibles par ici: </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>Code formation</th>
+                    <th>Nom</th>
+                </tr>
+                <tr th:each="f:${listFormation}">
+                    <td th:text="${f.idformation}"></td>
+                    <td th:text="${f.getNomformation()}"></td>
+                </tr>
+            </table>
         </div>
-
-
     </div>
+</div>
 
 </div>
 
