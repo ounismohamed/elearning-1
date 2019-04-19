@@ -6,11 +6,13 @@ import com.example.elearning.metier.IElearning;
 import com.example.elearning.repositories.FormationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -86,9 +88,16 @@ public class mainController {
     }*/
 
     @RequestMapping(value = "/catalogue",method = RequestMethod.GET)
-    public String listformations(Model model){
-        List<Formation> formation=formationRepository.findAll();
-        model.addAttribute("listformations",formation);
+    public String listformations(Model model,
+                                 @RequestParam(name="page",defaultValue = "0") int page,
+                                 @RequestParam(name="motCle",defaultValue = "") String mc){
+        Page<Formation> formation=formationRepository.findByDesignationContains("%"+mc+"%",PageRequest.of(page,5));
+        model.addAttribute("listformations",formation.getContent());
+        /*Page<Formation> formationPage = iElearning.listFormation(0,10);*/
+        model.addAttribute("pages",new int[formation.getTotalPages()]);
+        model.addAttribute("currentPage",page);
+        model.addAttribute("motCle",mc);
+
         return "catalogue";
     }
 

@@ -113,20 +113,32 @@
 </div>
 
 <div class="col-md-6">
-
-    <div class="panel panel-primary">
-        <div class="panel-heading">Toutes nos formations sont disponibles par ici:</div>
-        <div class="panel-body">
-            <table class="table table-striped">
-                <tr>
-                    <th>Code formation</th>
-                    <th>Nom</th>
-                </tr>
-                <tr th:each="f:${listformations}">
-                    <td th:text="${f.idformation}"></td>
-                    <td th:text="${f.nomformation}"></td>
-                </tr>
-            </table>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Toutes nos formations sont disponibles par ici:</div>
+            <div class="panel-body">
+                <form th:action="@{/catalogue}" method="get">
+                    <label>Mot clé: </label>
+                    <input type="text" name="motCle" th:value="${motCle}">
+                    <button type="submit" class="btn btn-primary">Chercher</button>
+                </form>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Code formation</th>
+                        <th>Nom</th>
+                    </tr>
+                    <tr th:each="f:${listformations}">
+                        <td th:text="${f.idformation}"></td>
+                        <td th:text="${f.nomformation}"></td>
+                    </tr>
+                </table>
+                <ul class="nav nav-pills">
+                    <li th:class="${currentPage==status.index}?'active':''" th:each="page,status:${pages}">
+                        <a th:href="@{/catalogue(page=${status.index}}" th:text="${status.index}"></a>
+                    </li>
+                </ul>
+            </div>
         </div>
         <!--<div class="container">
             <ul class="nav nav-pills">
@@ -135,7 +147,6 @@
                 </li>
             </ul>
         </div>-->
-    </div>
 </div>
 
 </body>
