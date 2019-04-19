@@ -122,22 +122,20 @@
                     <th>Code formation</th>
                     <th>Nom</th>
                 </tr>
-                <tr th:each="f:${listFormation}">
+                <tr th:each="f:${listformations}">
                     <td th:text="${f.idformation}"></td>
-                    <td th:text="${f.getNomformation()}"></td>
+                    <td th:text="${f.nomformation}"></td>
                 </tr>
             </table>
         </div>
-        <div class="container">
+        <!--<div class="container">
             <ul class="nav nav-pills">
                 <li th:each="p:${pages}">
                     <a th:text="${p}" th:href="@{consulterFormation(page=${p})}"></a>
                 </li>
             </ul>
-        </div>
+        </div>-->
     </div>
-</div>
-
 </div>
 
 </body>

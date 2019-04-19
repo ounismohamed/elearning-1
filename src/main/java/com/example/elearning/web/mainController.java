@@ -23,7 +23,7 @@ public class mainController {
     @Autowired
     private FormationRepository formationRepository;
 
-    @GetMapping("/catalogue")
+    @GetMapping("/cataloguex")
     public String home(){
         return "catalogue";
     }
@@ -33,15 +33,17 @@ public class mainController {
         model.addAttribute("idFormation",idFormation);
         try {
             Optional<Formation> formation=iElearning.consulterFormation(idFormation);
-            Page<Formation> formationPage = iElearning.listFormation(0,10);
+            /*Page<Formation> formationPage = iElearning.listFormation(0,10);*/
             /*Page<Module> modulePage = iElearning.listModule(0,5);*/
             /*model.addAttribute("listModule",modulePage.getContent());*/
-            model.addAttribute("listFormation",formationPage.getContent());
+           /* model.addAttribute("listFormation",formationPage.getContent());*/
             model.addAttribute("formation",formation);
-            int pageCount = formationPage.getTotalPages();
+            /*int pageCount = formationPage.getTotalPages();
             int[] pages = new int[pageCount];
             for (int i=0;i<pageCount;i++) pages[i]=i;
-            model.addAttribute("pages",pages);
+            model.addAttribute("pages",pages);*/
+            List<Formation> formations=formationRepository.findAll();
+            model.addAttribute("listformations",formations);
         }
         catch (Exception e){
             model.addAttribute("exception",e);      //exception stockee dans le model, sera affiche dans la vue
@@ -82,5 +84,12 @@ public class mainController {
     public String formInscription(){
         return "inscription";
     }*/
+
+    @RequestMapping(value = "/catalogue",method = RequestMethod.GET)
+    public String listformations(Model model){
+        List<Formation> formation=formationRepository.findAll();
+        model.addAttribute("listformations",formation);
+        return "catalogue";
+    }
 
 }
