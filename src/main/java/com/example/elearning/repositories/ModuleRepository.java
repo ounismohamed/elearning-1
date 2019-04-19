@@ -11,6 +11,6 @@ import java.util.List;
 
 public interface ModuleRepository extends JpaRepository <Module,Integer> {
 
-    @Query("select m from Module m")
-    Page<Module> listModule(Pageable pageable);
+    /*@Query("select m from Module m")
+    Page<Module> listModule(Pageable pageable);*/
 }

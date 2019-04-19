@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface IElearning {
      Optional<Formation> consulterFormation(int idFormation);
      Page<Formation> listFormation(int page, int size);
-     Page<Module> listModule(int page, int size);
+     /*Page<Module> listModule(int page, int size);*/
 }

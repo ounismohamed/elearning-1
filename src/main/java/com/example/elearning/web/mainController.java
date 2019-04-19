@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,8 +34,8 @@ public class mainController {
         try {
             Optional<Formation> formation=iElearning.consulterFormation(idFormation);
             Page<Formation> formationPage = iElearning.listFormation(0,10);
-            Page<Module> modulePage = iElearning.listModule(0,5);
-            model.addAttribute("listModule",modulePage.getContent());
+            /*Page<Module> modulePage = iElearning.listModule(0,5);*/
+            /*model.addAttribute("listModule",modulePage.getContent());*/
             model.addAttribute("listFormation",formationPage.getContent());
             model.addAttribute("formation",formation);
             int pageCount = formationPage.getTotalPages();
@@ -49,6 +51,11 @@ public class mainController {
     @GetMapping("/apropos")
     public String apropos(){
         return "apropos";
+    }
+
+    @GetMapping("/")
+    public String ind(){
+        return "accueil";
     }
 
     @GetMapping("/accueil")
@@ -70,5 +77,10 @@ public class mainController {
     public String contact(){
         return "contact";
     }
+
+    /*@RequestMapping(value="/form",method = RequestMethod.GET)
+    public String formInscription(){
+        return "inscription";
+    }*/
 
 }
