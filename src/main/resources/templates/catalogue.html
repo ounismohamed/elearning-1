@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
 <html
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:th="http://www.thymeleaf.org">
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="webjars/bootstrap/3.3.6/css/bootstrap.css">
@@ -87,35 +87,36 @@
                 </div>
             </div>
         </div>
+        <div class="panel panel-primary" th:if="${formation}">
+            <div class="panel-heading"> Description des modules</div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Code</th>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Duree</th>
+                        <th>Chapitres</th>
+                        <th>Type ressources</th>
+                    </tr>
+                    <tr th:each="m:${listModule}">
+                        <td th:text="${m.getId()}"></td>
+                        <td th:text="${m.getNom()}"></td>
+                        <td th:text="${m.getDescription()}"></td>
+                        <td th:text="${m.getDuree()}"></td>
+                        <td th:text="${m.getChapitres()}"></td>
+                        <td th:text="${m.getTyperessource()}"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
+</div>
 
 <div class="col-md-6">
-    <!--<div class="panel panel-primary">-->
-    <!--<div class="panel-heading">Liste des formations</div>-->
-    <!--<div class="panel-body">-->
-    <!--<form th:action="@{/listFormation}" method="get">-->
-    <!--<div>-->
-    <!--<label>Toutes les formations disponibles </label>-->
-    <!--<button type="submit" class="btn btn-primary">Chercher</button>-->
-    <!--</div>-->
-    <!--<table class="table table-striped">-->
-    <!--<tr>-->
-    <!--<th>Code formation</th>-->
-    <!--<th>Nom</th>-->
-    <!--<th>Duree</th>-->
-    <!--</tr>-->
-    <!--<tr th:each="f:${listFormation}">-->
-    <!--<td th:text="${f.getIdformation()}"></td>-->
-    <!--<td th:text="${f.getNomformation()}"></td>-->
-    <!--<td th:text="${f.getDuree()}"></td>-->
-    <!--</tr>-->
-    <!--</table>-->
-    <!--</form>-->
-    <!--</div>-->
-    <!--</div>-->
 
     <div class="panel panel-primary">
-        <div class="panel-heading">Toutes nos formations sont disponibles par ici: </div>
+        <div class="panel-heading">Toutes nos formations sont disponibles par ici:</div>
         <div class="panel-body">
             <table class="table table-striped">
                 <tr>

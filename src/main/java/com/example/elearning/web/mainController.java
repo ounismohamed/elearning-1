@@ -1,6 +1,7 @@
 package com.example.elearning.web;
 
 import com.example.elearning.entities.Formation;
+import com.example.elearning.entities.Module;
 import com.example.elearning.metier.IElearning;
 import com.example.elearning.repositories.FormationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 
@@ -26,9 +28,12 @@ public class mainController {
 
     @GetMapping("/consulterFormation")
     public String consulterFormation(Model model, int idFormation){
+        model.addAttribute("idFormation",idFormation);
         try {
             Optional<Formation> formation=iElearning.consulterFormation(idFormation);
-            Page<Formation> formationPage = iElearning.listFormation(0,5);
+            Page<Formation> formationPage = iElearning.listFormation(0,10);
+            Page<Module> modulePage = iElearning.listModule(0,5);
+            model.addAttribute("listModule",modulePage.getContent());
             model.addAttribute("listFormation",formationPage.getContent());
             model.addAttribute("formation",formation);
             int pageCount = formationPage.getTotalPages();
