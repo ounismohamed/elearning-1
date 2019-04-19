@@ -11,6 +11,6 @@ import java.util.List;
 
 public interface ModuleRepository extends JpaRepository <Module,Integer> {
 
-    @Query("select m from Module m")
+    @Query(value = "select m from Module m inner join m.formation")
     Page<Module> listModule(Pageable pageable);
 }

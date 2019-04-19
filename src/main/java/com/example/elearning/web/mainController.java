@@ -34,8 +34,8 @@ public class mainController {
         try {
             Optional<Formation> formation=iElearning.consulterFormation(idFormation);
             /*Page<Formation> formationPage = iElearning.listFormation(0,10);*/
-            /*Page<Module> modulePage = iElearning.listModule(0,5);*/
-            /*model.addAttribute("listModule",modulePage.getContent());*/
+            Page<Module> modulePage = iElearning.listModule(0,5);
+            model.addAttribute("listModule",modulePage.getContent());
            /* model.addAttribute("listFormation",formationPage.getContent());*/
             model.addAttribute("formation",formation);
             /*int pageCount = formationPage.getTotalPages();

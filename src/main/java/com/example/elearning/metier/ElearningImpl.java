@@ -19,6 +19,7 @@ import java.util.Optional;
 public class ElearningImpl implements IElearning {
     @Autowired      //injection des dependences
     private FormationRepository formationRepository;
+    @Autowired
     private ModuleRepository moduleRepository;
 
     @Override
@@ -38,10 +39,10 @@ public class ElearningImpl implements IElearning {
         return formationRepository.listFormation(PageRequest.of(page,size));
     }
 
-    /*@Override
+    @Override
     public Page<Module> listModule(int page, int size) {
         return moduleRepository.listModule(PageRequest.of(page,size));
-    }*/
+    }
 
 
 }

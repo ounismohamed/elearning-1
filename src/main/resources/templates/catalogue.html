@@ -99,12 +99,12 @@
                         <th>Type ressources</th>
                     </tr>
                     <tr th:each="m:${listModule}">
-                        <td th:text="${m.getId()}"></td>
-                        <td th:text="${m.getNom()}"></td>
-                        <td th:text="${m.getDescription()}"></td>
-                        <td th:text="${m.getDuree()}"></td>
-                        <td th:text="${m.getChapitres()}"></td>
-                        <td th:text="${m.getTyperessource()}"></td>
+                        <td th:text="${m.id}"></td>
+                        <td th:text="${m.nom}"></td>
+                        <td th:text="${m.description}"></td>
+                        <td th:text="${m.duree}"></td>
+                        <td th:text="${m.chapitres}"></td>
+                        <td th:text="${m.typeressource}"></td>
                     </tr>
                 </table>
             </div>
