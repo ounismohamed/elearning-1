@@ -1,9 +1,7 @@
 package com.example.elearning.web;
 
-import com.example.elearning.entities.Formateur;
-import com.example.elearning.entities.Formation;
+import com.example.elearning.entities.*;
 import com.example.elearning.entities.Module;
-import com.example.elearning.entities.Profile;
 import com.example.elearning.metier.IElearning;
 import com.example.elearning.repositories.FormationRepository;
 import com.example.elearning.repositories.ProfileRepository;
@@ -131,5 +129,9 @@ public class mainController {
         return "redirect:/inscription";
     }
 
-
+    @RequestMapping(value = "/contacterNous",method = RequestMethod.GET)
+    public String contacterNous(Model model){
+        model.addAttribute("contactmsg",new Contact());
+        return "redirect:/contact";
+    }
 }

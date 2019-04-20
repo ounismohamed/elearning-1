@@ -59,11 +59,11 @@
 
 <div class="col-md-6">
     <div class="span6">
-        <h4><i class="icon-envelope"></i><strong>Formulaire de contact</strong></h4>
+        <h4><strong>Formulaire de contact</strong></h4>
         <p>
             Tu veux travailler avec nous ou tu veux juste dire bonjour? N'hésitez pas à nous contacter!
         </p>
-        <form action="" method="post" role="form" class="contactForm">
+        <form th:action="@{/contacterNous}" method="post">
             <div id="sendmessage">Votre message a été envoyé. On vous remercie!</div>
             <div id="errormessage"></div>
 
@@ -97,7 +97,7 @@
 </div>
 <div class="col-md-6">
     <div class="span6">
-        <h4><i class="icon-suitcase"></i><strong>Notre bureau</strong></h4>
+        <h4><strong>Notre bureau</strong></h4>
         <p>
             N'hésitez pas à demander si vous avez des questions concernant nos services, nous aimerions avoir vos
             retours.
