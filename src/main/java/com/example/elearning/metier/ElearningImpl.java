@@ -44,5 +44,10 @@ public class ElearningImpl implements IElearning {
         return moduleRepository.listModule(PageRequest.of(page,size));
     }
 
+    @Override
+    public Page<Module> pageModule(int idFormation, int page, int size) {
+        return moduleRepository.pageModule(idFormation,PageRequest.of(page,size));
+    }
+
 
 }

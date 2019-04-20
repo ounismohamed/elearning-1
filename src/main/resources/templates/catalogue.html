@@ -25,7 +25,7 @@
         <div class="container-fluid">
             <ul class="nav navbar-nav navbar-left">
                 <li><a th:href="@{/accueil}"> Accueil </a></li>
-                <li><a th:href="@{/identification}"> S'identifier/Se connecter </a></li>
+                <li><a th:href="@{/inscription}"> S'identifier/Se connecter </a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -98,13 +98,13 @@
                         <th>Chapitres</th>
                         <th>Type ressources</th>
                     </tr>
-                    <tr th:each="m:${listModule}">
-                        <td th:text="${m.id}"></td>
-                        <td th:text="${m.nom}"></td>
-                        <td th:text="${m.description}"></td>
-                        <td th:text="${m.duree}"></td>
-                        <td th:text="${m.chapitres}"></td>
-                        <td th:text="${m.typeressource}"></td>
+                    <tr th:each="m:${pageModule}">
+                        <td th:text="${m.getId()}"></td>
+                        <td th:text="${m.getNom()}"></td>
+                        <td th:text="${m.getDescription()}"></td>
+                        <td th:text="${m.getDuree()}"></td>
+                        <td th:text="${m.getChapitres()}"></td>
+                        <td th:text="${m.getTyperessource()}"></td>
                     </tr>
                 </table>
             </div>
@@ -131,11 +131,14 @@
                     <tr th:each="f:${listformations}">
                         <td th:text="${f.idformation}"></td>
                         <td th:text="${f.nomformation}"></td>
+                        <td>
+                            <a onclick="return confirm('Vous confirmer la suppression?')" th:href="@{/delete(id=${f.idformation}, page=${currentPage}, motCle=${motCle})}">Delete</a>
+                        </td>
                     </tr>
                 </table>
                 <ul class="nav nav-pills">
                     <li th:class="${currentPage==status.index}?'active':''" th:each="page,status:${pages}">
-                        <a th:href="@{/catalogue(page=${status.index}}" th:text="${status.index}"></a>
+                        <a th:href="@{/catalogue(page=${status.index}, motCle=${motCle})}" th:text="${status.index}"></a>
                     </li>
                 </ul>
             </div>

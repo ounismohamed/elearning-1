@@ -11,4 +11,5 @@ public interface IElearning {
      Optional<Formation> consulterFormation(int idFormation);
      Page<Formation> listFormation(int page, int size);
      Page<Module> listModule(int page, int size);
+     Page<Module> pageModule(int idFormation,int page,int size);
 }

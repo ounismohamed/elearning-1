@@ -1,9 +1,12 @@
 package com.example.elearning.web;
 
+import com.example.elearning.entities.Formateur;
 import com.example.elearning.entities.Formation;
 import com.example.elearning.entities.Module;
+import com.example.elearning.entities.Profile;
 import com.example.elearning.metier.IElearning;
 import com.example.elearning.repositories.FormationRepository;
+import com.example.elearning.repositories.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.validation.constraints.Email;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,8 +28,10 @@ public class mainController {
     private IElearning iElearning;
     @Autowired
     private FormationRepository formationRepository;
+    @Autowired
+    private ProfileRepository profileRepository;
 
-    @GetMapping("/cataloguex")
+    @GetMapping("/notrecatalogue")
     public String home(){
         return "catalogue";
     }
@@ -36,16 +42,15 @@ public class mainController {
         try {
             Optional<Formation> formation=iElearning.consulterFormation(idFormation);
             /*Page<Formation> formationPage = iElearning.listFormation(0,10);*/
-            Page<Module> modulePage = iElearning.listModule(0,5);
-            model.addAttribute("listModule",modulePage.getContent());
+            /*Page<Module> modulePage = iElearning.listModule(0,5);*/
+            Page<Module> pageModule = iElearning.pageModule(idFormation,0,5);
+            model.addAttribute("pageModule",pageModule.getContent());
+            /*model.addAttribute("listModule",modulePage.getContent());*/
            /* model.addAttribute("listFormation",formationPage.getContent());*/
             model.addAttribute("formation",formation);
-            /*int pageCount = formationPage.getTotalPages();
-            int[] pages = new int[pageCount];
-            for (int i=0;i<pageCount;i++) pages[i]=i;
-            model.addAttribute("pages",pages);*/
             List<Formation> formations=formationRepository.findAll();
             model.addAttribute("listformations",formations);
+
         }
         catch (Exception e){
             model.addAttribute("exception",e);      //exception stockee dans le model, sera affiche dans la vue
@@ -65,11 +70,6 @@ public class mainController {
     @GetMapping("/accueil")
     public String index(){
         return "accueil";
-    }
-
-    @GetMapping("/inscription")
-    public String inscription(){
-        return "inscription";
     }
 
     @GetMapping("/identification")
@@ -100,5 +100,36 @@ public class mainController {
 
         return "catalogue";
     }
+
+    @GetMapping("/delete")
+    public String delete(int id, int page, String motCle){
+        formationRepository.deleteById(id);
+        return "redirect:/catalogue?page="+page+"&motCle="+motCle;
+    }
+
+    @RequestMapping(value = "inscription",method = RequestMethod.GET)
+    public String formInscription(Model model){
+        model.addAttribute("formateur",new Formateur());
+        return "inscription";
+    }
+
+    @RequestMapping(value = "/saveProfile",method = RequestMethod.POST)
+    public String saveProfile(Model model, String choix,
+                              String nom, String email, String identifiant,
+                              String motdepasse, String anciennete,
+                              String domaine, Formateur formateur){
+        try{
+            if (choix.equals("ajoutFormateur")) {
+                profileRepository.save(formateur);
+            }
+        }
+        catch (Exception e)
+        {
+            model.addAttribute("Erreur d'inscription",e);
+        }
+
+        return "redirect:/inscription";
+    }
+
 
 }

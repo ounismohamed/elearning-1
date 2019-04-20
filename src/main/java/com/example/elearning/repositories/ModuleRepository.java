@@ -13,4 +13,7 @@ public interface ModuleRepository extends JpaRepository <Module,Integer> {
 
     @Query(value = "select m from Module m inner join m.formation")
     Page<Module> listModule(Pageable pageable);
+
+    @Query(value = "select m from Module m where m.id=:x")
+    Page<Module> pageModule(@Param("x") int idFormation, Pageable pageable);
 }
