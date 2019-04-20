@@ -63,10 +63,6 @@ public class mainController {
         return "apropos";
     }
 
-    @GetMapping("/")
-    public String ind(){
-        return "accueil";
-    }
 
     @GetMapping("/accueil")
     public String index(){
@@ -81,6 +77,10 @@ public class mainController {
     @GetMapping("/contact")
     public String contact(){
         return "contact";
+    }
+    @GetMapping("/")
+    public String ind(){
+        return "accueil";
     }
 
     /*@RequestMapping(value="/form",method = RequestMethod.GET)
