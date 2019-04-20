@@ -13,7 +13,7 @@ import java.util.List;
 /*@JsonFormat(shape=JsonFormat.Shape.ARRAY)*/
 public class Module implements Serializable {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.AUTO)
     private int id;
     private String nom;
     private String description;

@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Entity
 public class Chapitre implements Serializable {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.AUTO)
     private int idchapitre;
     private String titre;
     private String description;

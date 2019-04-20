@@ -13,7 +13,7 @@ import java.io.Serializable;
 @DiscriminatorColumn(name="TYPE_PROFILE",discriminatorType = DiscriminatorType.STRING,length = 1)
 public abstract class Profile implements Serializable {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.AUTO)
 //    @GeneratedValue (strategy = GenerationType.AUTO)
     private int id;
     private String identifiant;
