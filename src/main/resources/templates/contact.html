@@ -57,13 +57,13 @@
     </div>
 </div>
 
-<div class="col-md-6">
+<!--<div class="col-md-6">
     <div class="span6">
         <h4><strong>Formulaire de contact</strong></h4>
         <p>
             Tu veux travailler avec nous ou tu veux juste dire bonjour? N'hésitez pas à nous contacter!
         </p>
-        <form th:action="@{/contacterNous}" method="post">
+        <form th:action="@{/saveContact}" method="post" >
             <div id="sendmessage">Votre message a été envoyé. On vous remercie!</div>
             <div id="errormessage"></div>
 
@@ -93,6 +93,37 @@
             </ul>
         </form>
 
+    </div>
+</div>-->
+<div class="col-md-6">
+    <div class="panel panel-default">
+        <div class="panel-heading">Afin de nous contacter, veuillez remplir ce formulaire</div>
+        <div class="panel-body">
+            <form th:action="@{saveContact}" method="post">
+                <div class="form-group">
+                    <label class="control-label">Nom et prénom:</label>
+                    <input type="text" placeholder="Votre nom et prénom"
+                           data-rule="minlen:4" data-msg="S'il vous plaît entrer au moins 4 caractères" class="form-control"/>
+                    <span></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Email:</label>
+                    <input type="text" placeholder="Votre Email"
+                           data-rule="email" data-msg="S'il vous plaît entrer une adresse email valide" class="form-control"/>
+                    <span></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Message:</label>
+                    <textarea rows="12" data-rule="required"
+                              data-msg="S'il vous plaît écrivez quelque chose pour nous"
+                              placeholder="Votre message" class="form-control">
+                    </textarea>
+                    <span></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">S'inscrire</button>
+            </form>
+        </div>
     </div>
 </div>
 <div class="col-md-6">

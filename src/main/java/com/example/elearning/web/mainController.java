@@ -3,6 +3,7 @@ package com.example.elearning.web;
 import com.example.elearning.entities.*;
 import com.example.elearning.entities.Module;
 import com.example.elearning.metier.IElearning;
+import com.example.elearning.repositories.ContactRepository;
 import com.example.elearning.repositories.FormationRepository;
 import com.example.elearning.repositories.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,8 @@ public class mainController {
     private FormationRepository formationRepository;
     @Autowired
     private ProfileRepository profileRepository;
+    @Autowired
+    private ContactRepository contactRepository;
 
     @GetMapping("/notrecatalogue")
     public String home(){
@@ -129,9 +132,15 @@ public class mainController {
         return "redirect:/inscription";
     }
 
-    @RequestMapping(value = "/contacterNous",method = RequestMethod.GET)
-    public String contacterNous(Model model){
-        model.addAttribute("contactmsg",new Contact());
+    @RequestMapping(value = "/form",method = RequestMethod.GET)
+    public String formContact(Model model){
+        model.addAttribute("contact",new Contact());
+        return "contact";
+    }
+
+    @RequestMapping(value = "/saveContact",method = RequestMethod.POST)
+    public String saveContact(Contact contact){
+        contactRepository.save(contact);
         return "redirect:/contact";
     }
 }
