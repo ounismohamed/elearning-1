@@ -42,12 +42,12 @@
 
     <div class="slider" id="main-slider"><!-- outermost container element -->
 
-        <img src="../static/3.jpg" alt="Second" class="slide" />
+        <img src="../static/3.jpg" th:src="@{3.jpg}" alt="Second" class="slide" />
 
-        <img src="../static/5.jpg" alt="Third" class="slide" />
-        <img src="../static/6.jpg" alt="Third" class="slide" />
-        <img src="../static/2.png" alt="First" class="slide" />
-        <img src="../static/4.jpg" alt="Third" class="slide" />
+        <img src="../static/5.jpg" th:src="@{5.jpg}" alt="Third" class="slide" />
+        <img src="../static/6.jpg" th:src="@{6.jpg}" alt="Third" class="slide" />
+        <img src="../static/2.png" th:src="@{2.png}" alt="First" class="slide" />
+        <img src="../static/4.jpg" th:src="@{4.jpg}" alt="Third" class="slide" />
 
     </div>
     <div id="bandeh">
@@ -119,5 +119,6 @@
         });
     })();
 </script>
+
 </body>
 </html>
