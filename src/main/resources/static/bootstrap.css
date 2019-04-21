@@ -1,4 +1,4 @@
-/*!
+container-fluid/*!
  * Bootstrap v2.3.1
  *
  * Copyright 2012 Twitter, Inc
@@ -11,6 +11,7 @@
 .clearfix {
     *zoom: 1;
 }
+
 
 .clearfix:before,
 .clearfix:after {
@@ -733,7 +734,11 @@ a.text-success:focus {
     text-align: center;
 }
 
-h1,
+#bandeh.h1{
+    color: black;
+   position: center;
+    padding-left: 100px;
+}
 h2,
 h3,
 h4,
