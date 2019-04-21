@@ -39,9 +39,6 @@
     </div>
 </header>
 
-<!--<div class="col-md-6">-->
-<!---->
-<!--</div>-->
 <div class="container">
     <div class="row">
         <div class="span12">
@@ -95,33 +92,33 @@
 
     </div>
 </div>-->
+
 <div class="col-md-6">
     <div class="panel panel-default">
         <div class="panel-heading">Afin de nous contacter, veuillez remplir ce formulaire</div>
         <div class="panel-body">
-            <form th:action="@{saveContact}" method="post">
+            <form th:action="@{/saveContact}" method="post" th:object="${mmmm}">
                 <div class="form-group">
-                    <label class="control-label">Nom et prénom:</label>
+                    <label class="control-label">Nom et prénom:<span>*</span></label>
                     <input type="text" placeholder="Votre nom et prénom"
-                           data-rule="minlen:4" data-msg="S'il vous plaît entrer au moins 4 caractères" class="form-control"/>
-                    <span></span>
+                           data-rule="minlen:4" data-msg="S'il vous plaît entrer au moins 4 caractères"
+                           th:field="*{nom}" class="form-control"/>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Email:</label>
+                    <label class="control-label">Email:<span>*</span></label>
                     <input type="text" placeholder="Votre Email"
-                           data-rule="email" data-msg="S'il vous plaît entrer une adresse email valide" class="form-control"/>
-                    <span></span>
+                           data-rule="email" data-msg="S'il vous plaît entrer une adresse email valide"
+                           th:field="*{email}" class="form-control"/>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Message:</label>
+                    <label class="control-label">Message:<span>*</span></label>
                     <textarea rows="12" data-rule="required"
                               data-msg="S'il vous plaît écrivez quelque chose pour nous"
-                              placeholder="Votre message" class="form-control">
+                              placeholder="Votre message" th:field="*{msg}" class="form-control">
                     </textarea>
-                    <span></span>
                 </div>
 
-                <button type="submit" class="btn btn-primary">S'inscrire</button>
+                <button type="submit" class="btn btn-primary">Envoyer un message</button>
             </form>
         </div>
     </div>
@@ -142,17 +139,17 @@
             2 Rue Abou Raihane Bayrouni 2080 l’Ariana Tunisia
         </p>
         <p>
-            <span></i><strong>Tél:</strong> (216) 71 706 164</span>
+            <span><strong>Tél:</strong> (216) 71 706 164</span>
         </p>
         <p>
-            <span></i><strong>Fax:</strong>(216) 71 706 698</span>
+            <span><strong>Fax:</strong>(216) 71 706 698</span>
         </p>
         <p>
-            <span></i><strong>Email:</strong>be@bebrighter.tn</span>
+            <span><strong>Email:</strong>be@bebrighter.tn</span>
         </p>
         <div class="dotted_line">
         </div>
-        <h4><i class="icon-group"></i><strong>Connectez-vous à travers nos réseaux sociaux</strong></h4>
+        <h4><strong>Connectez-vous à travers nos réseaux sociaux</strong></h4>
         <div class="social-links">
             <ul class="social-links">
                 <a class="btn-floating btn-lg btn-fb" type="button" role="button"><i class="fab fa-facebook-f"></i></a>

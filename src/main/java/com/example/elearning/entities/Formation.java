@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 public class Formation implements Serializable {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue (strategy = GenerationType.AUTO)
     private int idformation;
     @Column(nullable=false)
     private String nomformation;
