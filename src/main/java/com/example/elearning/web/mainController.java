@@ -78,10 +78,10 @@ public class mainController {
         return "identification";
     }
 
-    /*@GetMapping("/contact")
+    @GetMapping("/contact")
     public String contact(){
         return "contact";
-    }*/
+    }
 
     /*@RequestMapping(value="/form",method = RequestMethod.GET)
     public String formInscription(){
@@ -132,15 +132,15 @@ public class mainController {
         return "redirect:/inscription";
     }
 
-    @RequestMapping(value = "/contact",method = RequestMethod.GET)
+    @RequestMapping(value = "/form",method = RequestMethod.GET)
     public String formContact(Model model){
-        model.addAttribute("mmmm",new Contact());
+        model.addAttribute("contact",new Contact());
         return "contact";
     }
 
     @RequestMapping(value = "/saveContact",method = RequestMethod.POST)
     public String saveContact(Contact contact){
         contactRepository.save(contact);
-        return "/saveContact";
+        return "redirect:/contact";
     }
 }
