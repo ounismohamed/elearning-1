@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
 <html
-      xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      xmlns:th="http://www.thymeleaf.org">
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="webjars/bootstrap/3.3.6/css/bootstrap.css">
@@ -42,12 +42,12 @@
 
     <div class="slider" id="main-slider"><!-- outermost container element -->
 
-        <img src="3.jpg" alt="Second" class="slide" />
+        <img src="../static/3.jpg" alt="Second" class="slide" />
 
-            <img src="5.jpg" alt="Third" class="slide" />
-            <img src="6.jpg" alt="Third" class="slide" />
-            <img src="2.png" alt="First" class="slide" />
-            <img src="4.jpg" alt="Third" class="slide" />
+        <img src="../static/5.jpg" alt="Third" class="slide" />
+        <img src="../static/6.jpg" alt="Third" class="slide" />
+        <img src="../static/2.png" alt="First" class="slide" />
+        <img src="../static/4.jpg" alt="Third" class="slide" />
 
     </div>
     <div id="bandeh">
@@ -67,12 +67,10 @@
 
 <script>
     (function() {
-
         function Slideshow( element ) {
             this.el = document.querySelector( element );
             this.init();
         }
-
         Slideshow.prototype = {
             init: function() {
                 this.wrapper = this.el.querySelector( ".slider-wrapper" );
@@ -82,14 +80,12 @@
                 this.index = 0;
                 this.total = this.slides.length;
                 this.timer = null;
-
                 this.action();
                 this.stopStart();
             },
             _slideTo: function( slide ) {
                 var currentSlide = this.slides[slide];
                 currentSlide.style.opacity = 1;
-
                 for( var i = 0; i < this.slides.length; i++ ) {
                     var slide = this.slides[i];
                     if( slide !== currentSlide ) {
@@ -105,7 +101,6 @@
                         self.index = 0;
                     }
                     self._slideTo( self.index );
-
                 }, 3000);
             },
             stopStart: function() {
@@ -113,24 +108,15 @@
                 self.el.addEventListener( "mouseover", function() {
                     clearInterval( self.timer );
                     self.timer = null;
-
                 }, false);
                 self.el.addEventListener( "mouseout", function() {
                     self.action();
-
                 }, false);
             }
-
-
         };
-
         document.addEventListener( "DOMContentLoaded", function() {
-
             var slider = new Slideshow( "#main-slider" );
-
         });
-
-
     })();
 </script>
 </body>
