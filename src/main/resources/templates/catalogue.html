@@ -25,7 +25,7 @@
         <div class="container-fluid">
             <ul class="nav navbar-nav navbar-left">
                 <li><a th:href="@{/accueil}"> Accueil </a></li>
-                <li><a th:href="@{/inscription}"> S'identifier/Se connecter </a></li>
+                <li><a th:href="@{/inscription}"> S'inscrire/Se connecter </a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -109,8 +109,10 @@
                 </table>
             </div>
         </div>
+        <!--<button type="submit" class="btn btn-primary">Ajouter formation</button>-->
     </div>
 </div>
+
 
 <div class="col-md-6">
         <div class="panel panel-primary">
@@ -143,13 +145,7 @@
                 </ul>
             </div>
         </div>
-        <!--<div class="container">
-            <ul class="nav nav-pills">
-                <li th:each="p:${pages}">
-                    <a th:text="${p}" th:href="@{consulterFormation(page=${p})}"></a>
-                </li>
-            </ul>
-        </div>-->
+
 </div>
 
 <footer>

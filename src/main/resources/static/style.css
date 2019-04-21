@@ -28,8 +28,8 @@ body {
     font-family: Arial, Tahoma, Verdana, Sans-serif;
     font-size: 14px;
     line-height: 1.6em;
-    color: #666;
-    background-color: #ffffff;
+    /*color: #666;*/
+    /*background-color: #ffffff;*/
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -287,7 +287,7 @@ ul.nav li ul.dropdown-menu {
 }
 
 .default {
-    background:#010101;
+    /*background:#010101;*/
     border-bottom:1px solid #222;
 }
 
@@ -295,7 +295,7 @@ ul.nav li ul.dropdown-menu {
 
 .fixed {
     position: fixed;
-    background:#2a2a2a;
+    /*background:#2a2a2a;*/
     border:none;
     top:0;
     left: 0;

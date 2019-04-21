@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="TYPE_PROFILE",discriminatorType = DiscriminatorType.STRING,length = 1)
-public abstract class Profile implements Serializable {
+public class Profile implements Serializable {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
 //    @GeneratedValue (strategy = GenerationType.AUTO)

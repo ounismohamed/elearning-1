@@ -8,7 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="webjars/bootstrap/3.3.6/css/bootstrap.css">
-    <link rel="stylesheet" href="mySecondStyle.css">
+    <link rel="stylesheet" href="myStyle.css">
     <link rel="stylesheet" href="style.css">
     <script src="webjars/jquery/3.2.1/jquery.min.js"></script>
     <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -23,7 +23,7 @@
         <div class="container-fluid">
             <ul class="nav navbar-nav navbar-left">
                 <li><a th:href="@{/accueil}"> Accueil </a></li>
-                <li><a th:href="@{/inscription}"> S'identifier/Se connecter </a></li>
+                <li><a th:href="@{/inscription}"> S'inscrire/Se connecter </a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -58,7 +58,8 @@
     <div class="panel panel-default">
         <div class="panel-heading">S'inscrire dans Be Brighter</div>
         <div class="panel-body">
-            <form th:action="@{/saveProfile}" method="post" th:object="${formateur}">
+            <form th:action="@{/saveFA}" method="post" th:object="${apprenant}">
+            <form th:action="@{/saveFA}" method="post" th:object="${formateur}">
                 <div class="form-group">
                     <label>Vous êtes :</label>
                     <div>
@@ -71,36 +72,36 @@
                                     document.getElementById('domaine').style.display='none'"/>
                         <label>Apprenant</label>
                     </div>
-                    <label class="control-label">Nom et prénom:</label>
-                    <input type="text" th:field="*{nom}" class="form-control"/>
+                    <label class="control-label">Nom et prénom:<span>*</span></label>
+                    <input type="text" th:field="*{nom}" class="form-control" required="required"/>
                     <span></span>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Email:</label>
-                    <input type="text" th:field="*{email}" class="form-control"/>
+                    <label class="control-label">Email:<span>*</span></label>
+                    <input type="text" th:field="*{email}" class="form-control" required="required"/>
                     <span></span>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Identifiant:</label>
-                    <input type="text" th:field="*{identifiant}" class="form-control"/>
+                    <label class="control-label">Identifiant:<span>*</span></label>
+                    <input type="text" th:field="*{identifiant}" class="form-control" required="required"/>
                     <span></span>
                 </div>
                 <div class="form-group">
-                    <label class="control-label">Mot de passe:</label>
-                    <input type="password" th:field="*{motdepasse}" class="form-control"/>
-                    <span></span>
-                </div>
-                <div class="form-group" id="anciennete">
-                    <label class="control-label">Anciennete:</label>
-                    <input type="password" th:field="*{anciennete}" class="form-control"/>
+                    <label class="control-label">Mot de passe:<span>*</span></label>
+                    <input type="password" th:field="*{motdepasse}" class="form-control" required="required"/>
                     <span></span>
                 </div>
                 <div class="form-group" id="domaine">
-                    <label class="control-label">Domaine d'expertise:</label>
-                    <input type="password" th:field="*{domaineExpertise}" class="form-control"/>
+                    <label class="control-label">Domaine d'expertise:<span>*</span></label>
+                    <input type="text" th:field="*{domaineExpertise}" class="form-control" required="required"/>
                     <span></span>
                 </div>
+                <div class="form-group" id="anciennete">
+                    <label class="control-label">Anciennete:<span>*</span></label>
+                    <input type="text" th:field="*{anciennete}" class="form-control" required="required"/>
+                </div>
                 <button type="submit" class="btn btn-primary">S'inscrire</button>
+            </form>
             </form>
         </div>
     </div>

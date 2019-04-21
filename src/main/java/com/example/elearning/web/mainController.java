@@ -3,9 +3,7 @@ package com.example.elearning.web;
 import com.example.elearning.entities.*;
 import com.example.elearning.entities.Module;
 import com.example.elearning.metier.IElearning;
-import com.example.elearning.repositories.ContactRepository;
-import com.example.elearning.repositories.FormationRepository;
-import com.example.elearning.repositories.ProfileRepository;
+import com.example.elearning.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,14 +26,14 @@ public class mainController {
     @Autowired
     private FormationRepository formationRepository;
     @Autowired
-    private ProfileRepository profileRepository;
-    @Autowired
     private ContactRepository contactRepository;
+    @Autowired
+    private ProfileRepository profileRepository;
 
-    @GetMapping("/notrecatalogue")
-    public String home(){
-        return "catalogue";
-    }
+    /*@GetMapping("/ajouterFormation")
+    public String ajouterFormationButton(){
+        return "ajoutSuppFormation";
+    }*/
 
     @GetMapping("/consulterFormation")
     public String consulterFormation(Model model, int idFormation){
@@ -78,16 +76,6 @@ public class mainController {
         return "identification";
     }
 
-    /*@GetMapping("/contact")
-    public String contact(){
-        return "contact";
-    }*/
-
-    /*@RequestMapping(value="/form",method = RequestMethod.GET)
-    public String formInscription(){
-        return "inscription";
-    }*/
-
     @RequestMapping(value = "/catalogue",method = RequestMethod.GET)
     public String listformations(Model model,
                                  @RequestParam(name="page",defaultValue = "0") int page,
@@ -108,20 +96,21 @@ public class mainController {
         return "redirect:/catalogue?page="+page+"&motCle="+motCle;
     }
 
-    @RequestMapping(value = "inscription",method = RequestMethod.GET)
+    @RequestMapping(value = "/inscription",method = RequestMethod.GET)
     public String formInscription(Model model){
         model.addAttribute("formateur",new Formateur());
+        model.addAttribute("apprenant",new Apprenant());
         return "inscription";
     }
 
-    @RequestMapping(value = "/saveProfile",method = RequestMethod.POST)
-    public String saveProfile(Model model, String choix,
-                              String nom, String email, String identifiant,
-                              String motdepasse, String anciennete,
-                              String domaine, Formateur formateur){
+    @RequestMapping(value = "/saveFA",method = RequestMethod.POST)
+    public String saveProfile(Model model, String choix, Formateur formateur,Apprenant apprenant){
         try{
             if (choix.equals("ajoutFormateur")) {
                 profileRepository.save(formateur);
+            }
+            else if (choix.equals("ajoutApprenant")){
+                profileRepository.save(apprenant);
             }
         }
         catch (Exception e)
@@ -129,7 +118,7 @@ public class mainController {
             model.addAttribute("Erreur d'inscription",e);
         }
 
-        return "redirect:/inscription";
+        return "/saveInscriptionFormateur";
     }
 
     @RequestMapping(value = "/contact",method = RequestMethod.GET)
@@ -143,4 +132,22 @@ public class mainController {
         contactRepository.save(contact);
         return "/saveContact";
     }
+
+    @RequestMapping(value = "/ajoutSuppFormation",method = RequestMethod.GET)
+    public String ajoutSuppFormation(Model model){
+        model.addAttribute("formation",new Formation());
+        return "ajoutSuppFormation";
+    }
+
+    @RequestMapping(value = "/saveFormation",method = RequestMethod.POST)
+    public String ajoutFormation(Formation formation){
+            formationRepository.save(formation);
+        return "saveInscriptionFormateur";
+    }
+
+    @GetMapping("/saveInscriptionFormateur")
+    public String ajoutSuppFormation(){
+        return "ajoutSuppFormation";
+    }
+
 }
