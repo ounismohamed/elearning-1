@@ -47,7 +47,7 @@ public class mainController {
             Page<Module> pageModule = iElearning.pageModule(idFormation,0,5);
             model.addAttribute("pageModule",pageModule.getContent());
             /*model.addAttribute("listModule",modulePage.getContent());*/
-           /* model.addAttribute("listFormation",formationPage.getContent());*/
+            /* model.addAttribute("listFormation",formationPage.getContent());*/
             model.addAttribute("formation",formation);
             List<Formation> formations=formationRepository.findAll();
             model.addAttribute("listformations",formations);
@@ -78,10 +78,10 @@ public class mainController {
         return "identification";
     }
 
-    @GetMapping("/contact")
+    /*@GetMapping("/contact")
     public String contact(){
         return "contact";
-    }
+    }*/
 
     /*@RequestMapping(value="/form",method = RequestMethod.GET)
     public String formInscription(){
@@ -132,15 +132,15 @@ public class mainController {
         return "redirect:/inscription";
     }
 
-    @RequestMapping(value = "/form",method = RequestMethod.GET)
+    @RequestMapping(value = "/contact",method = RequestMethod.GET)
     public String formContact(Model model){
-        model.addAttribute("contact",new Contact());
+        model.addAttribute("mmmm",new Contact());
         return "contact";
     }
 
     @RequestMapping(value = "/saveContact",method = RequestMethod.POST)
     public String saveContact(Contact contact){
         contactRepository.save(contact);
-        return "redirect:/contact";
+        return "/saveContact";
     }
 }
