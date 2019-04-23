@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.6/css/bootstrap.css">
+    <link rel="stylesheet" href="myStyle.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="webjars/jquery/3.2.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../static/favicon.ico">
+    <meta charset="UTF-8"/>
+    <title>Be Brighter</title>
+</head>
+
+<body>
+<header>
+    <div class="bg-black">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a th:href="@{/admin}"> Formations</a></li>
+                <li><a th:href="@{/adminFormateurs}"> Formateurs</a></li>
+                <li><a th:href="@{/adminApprenants}"> Apprenants</a></li>
+            </ul>
+
+            <div id="logo" style="text-align: center;">
+                <img src="../static/bebrighter.png" width="200" th:src="@{bebrighter.png}" alt="logo"/>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <div class="heading">
+                <h3><span>Espace administrateur</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-6 spacer col-md-offset-3">
+    <div class="panel panel-default">
+        <div class="panel-heading">Modification d'une formation</div>
+        <div class="panel-body">
+            <form th:action="@{/updateFormation}" method="post" th:object="${formation}">
+                <div class="form-group">
+                    <label class="control-label">ID de la formation:<span>*</span></label>
+                    <input type="text" th:field="*{idformation}" class="form-control" required="required"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Nom de la formation:<span>*</span></label>
+                    <input type="text" th:field="*{nomformation}" class="form-control" required="required"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Duree de la formation:<span>*</span></label>
+                    <input type="text" th:field="*{duree}" class="form-control" required="required"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Discipline de la formation:<span>*</span></label>
+                    <input type="text" th:field="*{discipline}" class="form-control" required="required"/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Nombre des modules de la formation:<span>*</span></label>
+                    <input type="text" th:field="*{nombremodules}" class="form-control" required="required"/>
+                </div>
+                <button type="submit" class="btn btn-primary">Modifier</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

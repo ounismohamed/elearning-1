@@ -42,22 +42,22 @@
     </div>
 </div>
 <div layout:fragment="content">
-    <div class="col-md-6">
+   <!-- <div class="col-md-6">
         <div class="panel panel-primary">
             <div class="panel-heading">Ajouter une formation</div>
             <div class="panel-body">
                 <form method="post">
                     <div class="form-group">
                         <label class="control-label">Nom de la formation:<span>*</span></label>
-                        <input type="text" class="form-control" required="required"/>
+                        <input type="text"  class="form-control" required="required"/>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Duree de la formation:<span>*</span></label>
-                        <input type="text" class="form-control" required="required"/>
+                        <input type="text"  class="form-control" required="required"/>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Discipline de la formation:<span>*</span></label>
-                        <input type="text" class="form-control" required="required"/>
+                        <input type="text"  class="form-control" required="required"/>
                     </div>
                     <div class="form-group">
                         <label class="control-label">Nombre des modules de la formation:<span>*</span></label>
@@ -69,10 +69,10 @@
         </div>
 
 
-    </div>
-    <div class="col-md-6">
+    </div>-->
+    <div class="col-md-6 col-md-offset-3">
         <div class="panel panel-primary">
-            <div class="panel-heading">Supprimer une formation</div>
+            <div class="panel-heading">Modifier/supprimer une formation</div>
             <div class="panel-body">
                 <div class="panel-body">
                     <form th:action="@{/admin}" method="get">
@@ -86,12 +86,21 @@
                         <tr>
                             <th>Code formation</th>
                             <th>Nom</th>
+                            <th>Duree</th>
+                            <th>Discipline</th>
+                            <th>Nombre modules</th>
                         </tr>
                         <tr th:each="f:${listformations}">
                             <td th:text="${f.idformation}"></td>
                             <td th:text="${f.nomformation}"></td>
+                            <td th:text="${f.duree}"></td>
+                            <td th:text="${f.discipline}"></td>
+                            <td th:text="${f.nombremodules}"></td>
                             <td>
-                                <a onclick="return confirm('Vous confirmer la suppression de la formation?')"
+                                <a th:href="@{editerFormation(id=${f.idformation})}">Modifier</a>
+                            </td>
+                              <td>
+                                  <a onclick="return confirm('Vous confirmez la suppression de la formation?')"
                                    th:href="@{/delete(id=${f.idformation}, page=${currentPage}, motCle=${motCle})}">Supprimer</a>
                             </td>
                         </tr>
@@ -105,6 +114,13 @@
                 </div>
             </div>
         </div>
+
+    </div>
+    <div class="col-md-6 spacer col-md-offset-5">
+        <label>Sinon ajouter une par ici: </label>
+        <form th:action="@{/ajoutFormation}">
+            <button type="submit" class="btn btn-primary">Ajouter formation</button>
+        </form>
     </div>
 
 

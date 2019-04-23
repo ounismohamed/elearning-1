@@ -42,19 +42,11 @@
     </div>
 </div>
 <div layout:fragment="content">
-    <div class="col-md-6">
-        <div class="panel panel-primary">
-            <div class="panel-heading">Modifier un apprenant</div>
-            <div class="panel-body">
-
-            </div>
-        </div>
-
 
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6 col-md-offset-3">
         <div class="panel panel-primary">
-            <div class="panel-heading">Supprimer un apprenant</div>
+            <div class="panel-heading">Modifier/Supprimer un apprenant</div>
             <div class="panel-body">
                 <form th:action="@{/adminApprenants}" method="get">
                     <label>Mot clé: </label>
@@ -67,10 +59,15 @@
                     <tr>
                         <th>ID apprenant</th>
                         <th>Nom</th>
+                        <th>Email</th>
                     </tr>
                     <tr th:each="f:${listapprenants}">
                         <td th:text="${f.id}"></td>
                         <td th:text="${f.nom}"></td>
+                        <td th:text="${f.email}"></td>
+                        <td>
+                            <a th:href="@{editerApprenant(id=${f.id})}">Modifier</a>
+                        </td>
                         <td>
                             <a onclick="return confirm('Vous confirmer la suppression de l apprenant?')"
                                th:href="@{/deleteApprenant(id=${f.id}, page=${currentPage}, motCle=${motCle})}">Supprimer</a>
@@ -85,49 +82,12 @@
             </div>
             </div>
         </div>
-    </div>
-
-    <!--<div class="col-md-6">
-        <div class="panel panel-primary">
-            <div class="panel-heading">Supprimer un formateur</div>
-            <div class="panel-body">
-                <form th:action="@{/adminFormateur}" method="get">
-                    <label>Mot clé: </label>
-                    <input type="text" name="motRech" th:value="${motRch}">
-                    <button type="submit" class="btn btn-primary">Chercher</button>
-                </form>
-            </div>
-            <div class="panel-body">
-                <table class="table table-striped">
-                    <tr>
-                        <th>ID formateur</th>
-                        <th>Nom</th>
-                    </tr>
-                    <tr th:each="f:${listformateurs}">
-                        <td th:text="${f.id}"></td>
-                        <td th:text="${f.nom}"></td>
-                        <td>
-                            <a onclick="return confirm('Vous confirmer la suppression du formateur?')"
-                               th:href="@{/delete(id=${f.id}, page=${actualPage}, motRch=${motRch})}">Supprimer</a>
-                        </td>
-                    </tr>
-                </table>
-                <ul class="nav nav-pills">
-                    <li th:class="${actualPage==status.index}?'active':''" th:each="page,status:${pages}">
-                        <a th:href="@{/admin(page=${status.index}, motRch=${motRch})}" th:text="${status.index}"></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="panel panel-primary">
-        <div class="panel-heading">Supprimer un apprenant</div>
-        <div class="panel-body">
-
-        </div>
-    </div>-->
-
+<div class="col-md-6 spacer col-md-offset-5">
+    <label>Ajouter un apprenant manuellement par ici: </label>
+    <form th:action="@{/ajoutApprenant}">
+        <button type="submit" class="btn btn-primary">Ajouter un apprenant</button>
+    </form>
+</div>
 
 </body>
 </html>

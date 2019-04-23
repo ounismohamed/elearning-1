@@ -9,12 +9,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.validation.constraints.Email;
+import javax.validation.Valid;
+import java.text.Normalizer;
 import java.util.List;
 import java.util.Optional;
 
@@ -106,12 +108,12 @@ public class mainController {
 
     @RequestMapping(value = "/adminFormateurs",method = RequestMethod.GET)
     public String listformateursAdmin(Model model,
-                                 @RequestParam(name="actualPage",defaultValue = "0") int currentPage,
+                                 @RequestParam(name="page",defaultValue = "0") int page,
                                  @RequestParam(name="motCle",defaultValue = "") String mc){
-        Page<Formateur> formateurs=formateurRepository.findByDesignationFormateur("%"+mc+"%",PageRequest.of(currentPage,5));
+        Page<Formateur> formateurs=formateurRepository.findByDesignationFormateur("%"+mc+"%",PageRequest.of(page,5));
         model.addAttribute("listformateurs",formateurs.getContent());
         model.addAttribute("pages",new int[formateurs.getTotalPages()]);
-        model.addAttribute("currentPage",currentPage);
+        model.addAttribute("currentPage",page);
         model.addAttribute("motCle",mc);
 
         return "adminFormateurs";
@@ -119,12 +121,12 @@ public class mainController {
 
     @RequestMapping(value = "/adminApprenants",method = RequestMethod.GET)
     public String listapprenantsAdmin(Model model,
-                                      @RequestParam(name="currentPage",defaultValue = "0") int currentPage,
+                                      @RequestParam(name="page",defaultValue = "0") int page,
                                       @RequestParam(name="motCle",defaultValue = "") String mc){
-        Page<Apprenant> apprenants=apprenantRepository.findByDesignationApprenant("%"+mc+"%",PageRequest.of(currentPage,5));
+        Page<Apprenant> apprenants=apprenantRepository.findByDesignationApprenant("%"+mc+"%",PageRequest.of(page,5));
         model.addAttribute("listapprenants",apprenants.getContent());
         model.addAttribute("pages",new int[apprenants.getTotalPages()]);
-        model.addAttribute("currentPage",currentPage);
+        model.addAttribute("currentPage",page);
         model.addAttribute("motCle",mc);
 
         return "adminApprenants";
@@ -172,10 +174,10 @@ public class mainController {
     public String saveProfile(Model model, String choix, Formateur formateur,Apprenant apprenant){
         try{
             if (choix.equals("ajoutFormateur")) {
-                profileRepository.save(formateur);
+                formateurRepository.save(formateur);
             }
             else if (choix.equals("ajoutApprenant")){
-                profileRepository.save(apprenant);
+                apprenantRepository.save(apprenant);
             }
         }
         catch (Exception e)
@@ -198,23 +200,93 @@ public class mainController {
         return "/saveContact";
     }
 
-    @RequestMapping(value = "/ajoutSuppFormation",method = RequestMethod.GET)
-    public String ajoutSuppFormation(Model model){
+    @RequestMapping(value = "/ajoutFormation",method = RequestMethod.GET)
+    public String formFormation(Model model){
         model.addAttribute("formation",new Formation());
-        return "ajoutSuppFormation";
+        return "ajoutFormation";
     }
 
     @RequestMapping(value = "/saveFormation",method = RequestMethod.POST)
-    public String ajoutFormation(Formation formation){
-            formationRepository.save(formation);
-        return "saveInscriptionFormateur";
+    public String saveFormation(Formation formation){
+        formationRepository.save(formation);
+        return "redirect:/admin";
     }
 
     @GetMapping("/saveInscriptionFormateur")
     public String ajoutSuppFormation(){
-        return "ajoutSuppFormation";
+        return "ajoutFormation";
     }
 
+    @RequestMapping(value="/editerFormation")
+    public String editerFormation(int id, Model model){
+        Formation formation=formationRepository.getOne(id);
+        model.addAttribute("formation",formation);
+        return "editerFormation";
+    }
 
+    @RequestMapping(value = "/updateFormation",method=RequestMethod.POST)
+    public String update(@Valid Formation formation, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            return "editerFormation";
+        }
+        formationRepository.save(formation);
+        return "redirect:/admin";
+    }
+
+    @RequestMapping(value="/editerFormateur")
+    public String editerFormateur(int id, Model model){
+        Formateur formateur=formateurRepository.getOne(id);
+        model.addAttribute("formateur",formateur);
+        return "editerFormateur";
+    }
+
+    @RequestMapping(value = "/updateFormateur",method=RequestMethod.POST)
+    public String updateFormateur(@Valid Formateur formateur, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            return "editerFormateur";
+        }
+        formateurRepository.save(formateur);
+        return "redirect:/adminFormateurs";
+    }
+
+    @RequestMapping(value = "/ajoutFormateur",method = RequestMethod.GET)
+    public String formFormateur(Model model){
+        model.addAttribute("formateur",new Formateur());
+        return "ajoutFormateur";
+    }
+
+    @RequestMapping(value = "/saveFormateur",method = RequestMethod.POST)
+    public String saveFormateur(Formateur formateur){
+        formateurRepository.save(formateur);
+        return "redirect:/adminFormateurs";
+    }
+
+    @RequestMapping(value = "/ajoutApprenant",method = RequestMethod.GET)
+    public String formApprenant(Model model){
+        model.addAttribute("apprenant",new Apprenant());
+        return "ajoutApprenant";
+    }
+
+    @RequestMapping(value = "/saveApprenant",method = RequestMethod.POST)
+    public String saveApprenant(Apprenant apprenant){
+        apprenantRepository.save(apprenant);
+        return "redirect:/adminApprenants";
+    }
+
+    @RequestMapping(value="/editerApprenant")
+    public String editerApprenant(int id, Model model){
+        Apprenant apprenant=apprenantRepository.getOne(id);
+        model.addAttribute("apprenant",apprenant);
+        return "editerApprenant";
+    }
+
+    @RequestMapping(value = "/updateApprenant",method=RequestMethod.POST)
+    public String updateApprenant(@Valid Apprenant apprenant, BindingResult bindingResult){
+        if (bindingResult.hasErrors()){
+            return "editerApprenant";
+        }
+        apprenantRepository.save(apprenant);
+        return "redirect:/adminApprenants";
+    }
 
 }
