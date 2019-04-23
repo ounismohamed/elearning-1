@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.6/css/bootstrap.css">
+    <link rel="stylesheet" href="myStyle.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="webjars/jquery/3.2.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" type="image/png" href="../static/favicon.ico">
+    <meta charset="UTF-8"/>
+    <title>Be Brighter</title>
+</head>
+
+<body>
+<header>
+    <div class="bg-black">
+        <div class="container-fluid">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a th:href="@{/admin}"> Formations</a></li>
+                <li><a th:href="@{/adminFormateurs}"> Formateurs</a></li>
+                <li><a th:href="@{/adminApprenants}"> Apprenants</a></li>
+            </ul>
+            <div id="logo" style="text-align: center;">
+                <img src="../static/bebrighter.png" width="200" th:src="@{bebrighter.png}" alt="logo"/>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="span12">
+            <div class="heading">
+                <h3><span>Espace administrateur</span></h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div layout:fragment="content">
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Modifier un apprenant</div>
+            <div class="panel-body">
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Supprimer un apprenant</div>
+            <div class="panel-body">
+                <form th:action="@{/adminApprenants}" method="get">
+                    <label>Mot clé: </label>
+                    <input type="text" name="motCle" th:value="${motCle}">
+                    <button type="submit" class="btn btn-primary">Chercher</button>
+                </form>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <tr>
+                        <th>ID apprenant</th>
+                        <th>Nom</th>
+                    </tr>
+                    <tr th:each="f:${listapprenants}">
+                        <td th:text="${f.id}"></td>
+                        <td th:text="${f.nom}"></td>
+                        <td>
+                            <a onclick="return confirm('Vous confirmer la suppression de l apprenant?')"
+                               th:href="@{/deleteApprenant(id=${f.id}, page=${currentPage}, motCle=${motCle})}">Supprimer</a>
+                        </td>
+                    </tr>
+                </table>
+                <ul class="nav nav-pills">
+                    <li th:class="${currentPage==status.index}?'active':''" th:each="page,status:${pages}">
+                        <a th:href="@{/adminApprenants(page=${status.index}, motCle=${motCle})}" th:text="${status.index}"></a>
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="col-md-6">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Supprimer un formateur</div>
+            <div class="panel-body">
+                <form th:action="@{/adminFormateur}" method="get">
+                    <label>Mot clé: </label>
+                    <input type="text" name="motRech" th:value="${motRch}">
+                    <button type="submit" class="btn btn-primary">Chercher</button>
+                </form>
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <tr>
+                        <th>ID formateur</th>
+                        <th>Nom</th>
+                    </tr>
+                    <tr th:each="f:${listformateurs}">
+                        <td th:text="${f.id}"></td>
+                        <td th:text="${f.nom}"></td>
+                        <td>
+                            <a onclick="return confirm('Vous confirmer la suppression du formateur?')"
+                               th:href="@{/delete(id=${f.id}, page=${actualPage}, motRch=${motRch})}">Supprimer</a>
+                        </td>
+                    </tr>
+                </table>
+                <ul class="nav nav-pills">
+                    <li th:class="${actualPage==status.index}?'active':''" th:each="page,status:${pages}">
+                        <a th:href="@{/admin(page=${status.index}, motRch=${motRch})}" th:text="${status.index}"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">Supprimer un apprenant</div>
+        <div class="panel-body">
+
+        </div>
+    </div>-->
+
+
+</body>
+</html>

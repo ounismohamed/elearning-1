@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 @Getter @Setter @NoArgsConstructor
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @DiscriminatorColumn(name="TYPE_PROFILE",discriminatorType = DiscriminatorType.STRING,length = 1)
 public class Profile implements Serializable {
     @Id
