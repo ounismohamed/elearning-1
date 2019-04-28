@@ -3,7 +3,8 @@
 <html
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        xmlns:th="http://www.thymeleaf.org">
+        xmlns:th="http://www.thymeleaf.org"
+        layout:decorate="~{fragments/layout}">
 
 <head>
     <meta charset="UTF-8">
@@ -19,114 +20,95 @@
 </head>
 
 <body>
-<header>
-    <div class="bg-black">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav navbar-left">
-                <li><a th:href="@{/accueil}"> Accueil </a></li>
-                <li><a th:href="@{/inscription}"> S'inscrire/Se connecter </a></li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li><a th:href="@{/apropos}"> A propos </a></li>
-                <li><a th:href="@{/catalogue}">Catalogue des formations</a></li>
-                <li><a th:href="@{/contact}">Contact</a></li>
-            </ul>
-
-            <div id="logo" style="text-align: center;">
-                <img src="../static/bebrighter.png" width="300" th:src="@{bebrighter.png}" alt="logo"/>
+<div layout:fragment="content">
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <div class="heading">
+                    <h3><span>Notre équipe!</span></h3>
+                </div>
             </div>
         </div>
     </div>
-</header>
-
-<div class="container">
-    <div class="row">
-        <div class="span12">
-            <div class="heading">
-                <h3><span>Notre équipe!</span></h3>
+    <div class="container">
+        <div class="row">
+            <div class="heading-title text-center">
+                <div class="sub-heading">
+                    <p class="p-top-30 half-txt"> Notre équipe est formée de trois formateurs <b>expérimentés </b> du
+                        domaine </p>
+                </div>
             </div>
+
+            <div class="col-md-4 col-sm-4">
+                <div class="team-member">
+                    <div class="team-img">
+                        <img src="rayen.jpg" alt="team member" class="img-responsive">
+                    </div>
+                    <div class="team-hover">
+                        <div class="desk">
+                            <h4>23 ans </h4>
+                            <p>Ingénieur en Réseaux informatique et télécommunication </p>
+                        </div>
+                        <div class="s-link">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-title">
+                    <h5>BENSAID RAYEN</h5>
+                    <span>Désigneur</span>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="team-member">
+                    <div class="team-img">
+                        <img src="oumayma.jpg" alt="team member" class="img-responsive">
+                    </div>
+                    <div class="team-hover">
+                        <div class="desk">
+                            <h4>23 ans </h4>
+                            <p>Ingénieur en Réseaux informatique et télécommunication</p>
+                        </div>
+                        <div class="s-link">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-title">
+                    <h5>AMRI OUMAYMA </h5>
+                    <span>Développeur web </span>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="team-member">
+                    <div class="team-img">
+                        <img src="sahar.jpg" alt="team member" class="img-responsive">
+                    </div>
+                    <div class="team-hover">
+                        <div class="desk">
+                            <h4>23 ans </h4>
+                            <p>Ingénieur en Réseaux informatique et télécommunication .</p>
+                        </div>
+                        <div class="s-link">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="team-title">
+                    <h5>BENHAMMOUDA SAHAR</h5>
+                    <span>Développeur web</span>
+                </div>
+            </div>
+
         </div>
+
     </div>
 </div>
-<div class="container">
-    <div class="row">
-        <div class="heading-title text-center">
-            <div class="sub-heading">
-            <p class="p-top-30 half-txt"> Notre équipe est formée de trois formateurs <b>expérimentés </b> du domaine  </p>
-            </div>
-        </div>
-
-        <div class="col-md-4 col-sm-4">
-            <div class="team-member">
-                <div class="team-img">
-                    <img src="rayen.jpg" alt="team member" class="img-responsive">
-                </div>
-                <div class="team-hover">
-                    <div class="desk">
-                        <h4>23 ans </h4>
-                        <p>Ingénieur en Réseaux informatique et télécommunication </p>
-                    </div>
-                    <div class="s-link">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="team-title">
-                <h5>BENSAID RAYEN</h5>
-                <span>Désigneur</span>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-4">
-            <div class="team-member">
-                <div class="team-img">
-                    <img src="oumayma.jpg" alt="team member" class="img-responsive">
-                </div>
-                <div class="team-hover">
-                    <div class="desk">
-                        <h4>23 ans </h4>
-                        <p>Ingénieur en Réseaux informatique et télécommunication</p>
-                    </div>
-                    <div class="s-link">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="team-title">
-                <h5>AMRI OUMAYMA </h5>
-                <span>Développeur web </span>
-            </div>
-        </div>
-        <div class="col-md-4 col-sm-4">
-            <div class="team-member">
-                <div class="team-img">
-                    <img src="sahar.jpg" alt="team member" class="img-responsive">
-                </div>
-                <div class="team-hover">
-                    <div class="desk">
-                        <h4>23 ans </h4>
-                        <p>Ingénieur en Réseaux informatique et télécommunication .</p>
-                    </div>
-                    <div class="s-link">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-google-plus"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="team-title">
-                <h5>BENHAMMOUDA SAHAR</h5>
-                <span>Développeur web</span>
-            </div>
-        </div>
-
-    </div>
-
-</div>
-
 </body>
 </html>

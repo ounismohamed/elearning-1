@@ -22,6 +22,9 @@
     <div class="bg-black">
         <div class="container-fluid">
             <ul class="nav navbar-nav navbar-left">
+                <li><a th:href="@{/accueil}"> Accueil </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                 <li><a th:href="@{/admin}"> Formations</a></li>
                 <li><a th:href="@{/adminFormateurs}"> Formateurs</a></li>
                 <li><a th:href="@{/adminApprenants}"> Apprenants</a></li>
@@ -85,13 +88,12 @@
                        th:text="${status.index}"></a>
                 </li>
             </ul>
+            <div class="col-md-6 col-md-offset-9">
+                <form th:action="@{/ajoutFormateur}">
+                    <button type="submit" class="btn btn-primary">Ajouter formateur</button>
+                </form>
+            </div>
         </div>
-    </div>
-    <div class="col-md-6 spacer col-md-offset-5">
-        <label>Ajouter manuellement un formateur par ici: </label>
-        <form th:action="@{/ajoutFormateur}">
-            <button type="submit" class="btn btn-primary">Ajouter formateur</button>
-        </form>
     </div>
 </div>
 

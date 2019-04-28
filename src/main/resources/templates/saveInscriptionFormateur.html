@@ -3,7 +3,8 @@
 <html
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        xmlns:th="http://www.thymeleaf.org">
+        xmlns:th="http://www.thymeleaf.org"
+        layout:decorate="~{fragments/layout}">
 
 <head>
     <meta charset="UTF-8">
@@ -18,110 +19,38 @@
 </head>
 
 <body>
-<header>
-    <div class="bg-black">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav navbar-left">
-                <li><a th:href="@{/accueil}"> Accueil </a></li>
-                <li><a th:href="@{/inscription}"> S'inscrire/Se connecter </a></li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li><a th:href="@{/apropos}"> A propos </a></li>
-                <li><a th:href="@{/catalogue}">Catalogue des formations</a></li>
-                <li><a th:href="@{/contact}">Contact</a></li>
-            </ul>
-            <div id="logo" style="text-align: center;">
-                <img src="../static/bebrighter.png" width="200" th:src="@{bebrighter.png}" alt="logo"/>
-            </div>
-        </div>
-    </div>
-</header>
-
-<div class="container">
-    <div class="row">
-        <div class="span12">
-            <div class="heading">
-                <h3><span>Bienvenue dans notre équipe!</span></h3>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="slogan" style="text-align: center;">
-    <div class="icon" style="text-align: center;">
-        <img src="../static/icon.png" width="200" th:src="@{icon.png}" alt="icon"/>
-    </div>
-</div>
-
-<div class="sub-heading">
-    <p>
-        Nous sommes une équipe formée de 3 formateurs expérimentés du domaine.
-    </p>
-</div>
-
-<section id="about" class="section">
+<div layout:fragment="content">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="span3">
-                    <img src="../static/rayen.jpg" th:src="@{rayen.jpg}" width="280" alt="" class="img-polaroid"/>
-                    <div class="roles">
-                        <h5><strong>Rayen Ben Said</strong></h5>
-                        <p>
-                            Développeur front-end
-                        </p>
-                        <ul class="social-profile">
-                            <li><a href="https://www.facebook.com/bensaiid.maddeh"><i
-                                    class="icon-facebook icon-32 icon-circled"></i></a></li>
-                            <li><a href="#"><i class="icon-linkedin icon-32 icon-circled"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="span3">
-                    <img src="../static/oumayma.jpg" th:src="@{oumayma.jpg}" width="280" alt="" class="img-polaroid"/>
-                    <div class="roles">
-                        <h5><strong>Oumayma Amri</strong></h5>
-                        <p>
-                            Développeur back-end
-                        </p>
-                        <ul class="social-profile">
-                            <li><a href="https://www.facebook.com/oumayma.amri1"><i
-                                    class="icon-facebook icon-32 icon-circled"></i></a></li>
-                            <li><a href="https://www.linkedin.com/in/oumayma-amri-022106116/"><i
-                                    class="icon-linkedin icon-32 icon-circled"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="span3">
-                    <img src="../static/sahar.jpg" th:src="@{sahar.jpg}" width="280" alt="" class="img-polaroid"/>
-                    <div class="roles">
-                        <h5><strong>Sahar Ben Hamouda</strong></h5>
-                        <p>
-                            Administrateur système et sécurité
-                        </p>
-                        <ul class="social-profile">
-                            <li><a href="https://www.facebook.com/Sahar.BenH"><i
-                                    class="icon-facebook icon-32 icon-circled"></i></a></li>
-                            <li><a href="https://www.linkedin.com/in/ben-hamouda-sahar-4b4753180/"><i
-                                    class="icon-linkedin icon-32 icon-circled"></i></a></li>
-                        </ul>
-                    </div>
+            <div class="span12">
+                <div class="heading">
+                    <h3><span>Bienvenue dans notre équipe!</span></h3>
                 </div>
             </div>
         </div>
     </div>
-</section>
 
-<div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4"></div>
-    <div class="col-md-4"></div>
+    <div class="slogan" style="text-align: center;">
+        <div class="icon" style="text-align: center;">
+            <img src="../static/icon.png" width="200" th:src="@{icon.png}" alt="icon"/>
+        </div>
+    </div>
+
+    <div class="sub-heading">
+        <p>
+            Nous sommes une équipe formée de 3 formateurs expérimentés du domaine.
+        </p>
+    </div>
+
+    <section id="about" class="section">
+
+    </section>
+
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+        <div class="col-md-4"></div>
+    </div>
 </div>
-
 </body>
 </html>

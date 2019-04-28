@@ -166,19 +166,19 @@ public class mainController {
     @RequestMapping(value = "/inscription",method = RequestMethod.GET)
     public String formInscription(Model model){
         model.addAttribute("formateur",new Formateur());
-        model.addAttribute("apprenant",new Apprenant());
         return "inscription";
+    }
+    @RequestMapping(value = "/inscriptionApprenant",method = RequestMethod.GET)
+    public String formInscriptionApprenant(Model model){
+        model.addAttribute("apprenant",new Apprenant());
+        return "inscriptionApprenant";
     }
 
     @RequestMapping(value = "/saveFA",method = RequestMethod.POST)
-    public String saveProfile(Model model, String choix, Formateur formateur,Apprenant apprenant){
+    public String saveProfile(Model model, Formateur formateur){
         try{
-            if (choix.equals("ajoutFormateur")) {
                 formateurRepository.save(formateur);
-            }
-            else if (choix.equals("ajoutApprenant")){
-                apprenantRepository.save(apprenant);
-            }
+
         }
         catch (Exception e)
         {
@@ -186,6 +186,21 @@ public class mainController {
         }
 
         return "/saveInscriptionFormateur";
+    }
+
+    @RequestMapping(value = "/saveApp",method = RequestMethod.POST)
+    public String saveApprenant(Model model, Apprenant apprenant){
+        try{
+
+                apprenantRepository.save(apprenant);
+
+        }
+        catch (Exception e)
+        {
+            model.addAttribute("Erreur d'inscription",e);
+        }
+
+        return "accueil";
     }
 
     @RequestMapping(value = "/contact",method = RequestMethod.GET)
@@ -287,6 +302,11 @@ public class mainController {
         }
         apprenantRepository.save(apprenant);
         return "redirect:/adminApprenants";
+    }
+
+    @GetMapping(value = "/login")
+    public String login(){
+        return "login";
     }
 
 }

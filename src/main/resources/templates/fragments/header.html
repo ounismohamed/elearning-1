@@ -1,0 +1,22 @@
+<header th:fragment="header" xmlns:th="http://www.springframework.org/schema/security">
+    <div class="bg-black">
+        <div class="container-fluid">
+
+            <ul class="nav navbar-nav navbar-left">
+                <li><a th:href="@{/accueil}"> Accueil </a></li>
+                <li><a th:href="@{/inscription}"> S'identifier/Se connecter </a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li><a th:href="@{/apropos}"> A propos </a></li>
+                <li><a th:href="@{/catalogue}">Catalogue des formations</a></li>
+                <li><a th:href="@{/contact}">Contact</a></li>
+            </ul>
+
+            <div id="logo" style="text-align: center;">
+                <img src="../static/bebrighter.png" width="300" th:src="@{bebrighter.png}" alt="logo"/>
+            </div>
+
+        </div>
+    </div>
+</header>

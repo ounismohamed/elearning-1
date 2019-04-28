@@ -3,8 +3,30 @@
 <html
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{fragments/layout}"
         xmlns:th="http://www.thymeleaf.org">
 <head>
+    <style >
+
+        .section-search input{
+            padding: 5px !important;
+            font-size: 18px !important;
+            width: 90% !important;
+            border: #f4f4f4 3px solid !important;
+        }
+
+        .section-follow .fa-4x{
+            margin: 5px 10px;
+        }
+    </style>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="webjars/bootstrap/3.3.6/css/bootstrap.css">
     <link rel="stylesheet" href="myStyle.css">
@@ -13,112 +35,224 @@
     <link rel="shortcut icon" type="image/png" href="../static/favicon.ico">
     <meta charset="UTF-8"/>
     <title>Be Brighter</title>
+
 </head>
 
 <body>
+<div layout:fragment="content">
+    <container id="home" class="scrollspy">
 
-<header>
+    <section class="slider">
+        <ul class="slides">
+            <li>
+                <img src="7.jpg"> <!-- random image -->
+                <div class="caption center-align">
+                    <h2> Évoluer vos compétences </h2>
+                    <h5 class="light grey-text text-lighten-3 hide-on-small-only">
+                        Pour une évolution professionnelle réussie, il est important de faire le point sur vos compétences acquises.
+                    </h5>
+                </div>
+            </li>
+            <li>
+                <img src="6.jpg"> <!-- random image -->
+                <div class="caption left-align">
+                    <h2> Renforcer votre profil </h2>
+                    <h5 class="light grey-text text-lighten-3 hide-on-small-only"> La formation est accessible et vous permet de rester à la pointe du marché .</h5>
+                </div>
+            </li>
+            <li>
+                <img src="5.jpg"> <!-- random image -->
+                <div class="caption right-align">
+                    <h2>Améliorer vos qualités</h2>
+                    <h5 class="light grey-text text-lighten-3 hide-on-small-only"> On vous offre le pouvoir de vous tenir au courant des avancées dans votre domaine.</h5>
+                </div>
+            </li>
+        </ul>
+    </section>
 
-    <div class="bg-black">
-        <div class="container-fluid">
+    <!-- SEARCH -->
+    <section id="search" class="section section-search light-blue darken-1 white-text center scrollspy">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
 
-            <ul class="nav navbar-nav navbar-left">
-                <li><a th:href="@{/accueil}"> Accueil </a></li>
-                <li><a th:href="@{/inscription}"> S'inscrire/Se connecter </a></li>
-            </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <p style="position:center; font-size: 28px;padding-left: 150px;padding-right: 150px;padding-top: 50px; padding-bottom: 50px;font-family: 'Angsana New'">
+        BEE-brighter.tn vous propose des cours riches et pertinents
+        vous permettant de maîtriser d'une manière opérationnelle la programmation orienté objet
+        et le développement Web. Notre plateforme vous permettent aussi d'aborder les aspects connexes à ce type de
+        développement : C++ , Java Script, manipulation de développement web...
 
-            <ul class="nav navbar-nav navbar-right">
-                <li><a th:href="@{/apropos}"> A propos </a></li>
-                <li><a th:href="@{/catalogue}">Catalogue des formations</a></li>
-                <li><a th:href="@{/contact}">Contact</a></li>
-            </ul>
+    </p>
+    <!-- ICONS -->
+    <section class="section section-icons grey lighten-4 center">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m4">
+                    <div class="card-panel">
+                        <i class="fas fa-graduation-cap"  style='font-size:48px;color: #00BFFF'></i>
+                        <h4> Formation </h4>
+                        <p> On vous offre des formations certifiées</p>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="card-panel">
+                        <i class="fas fa-gift" style='font-size:48px; color:#00BFFF' ></i>
 
-            <div id="logo" style="text-align: center;">
-                <img src="../static/bebrighter.png" width="300" th:src="@{bebrighter.png}" alt="logo"/>
+                        <h4>Offre</h4>
+                        <p>On vous offre des formations gratuites</p>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="card-panel">
+                        <i class="fas fa-globe fa-4x" style='font-size:48px;color: #00BFFF'></i>
+                        <h4>Disponibilité</h4>
+                        <p>7/7 de 8h jusqu'à 18h</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POPULAR PLACES -->
+    <section id="popular" class="section section-popular scrollspy">
+        <div class="container">
+            <div class="row">
+                <h4 class="center"><span class="light-blue-text" style="font-size: 25px">Nos formations réalisées a des conférences  </span></h4>
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="11.jpg" alt="">
+
+                        </div>
+                        <div class="card-content">
+                            Formation JEE ,BIZERTE
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="16.jpg" alt="">
+                            <span class="card-title"></span>
+                        </div>
+                        <div class="card-content">
+                            Formation JAVA, SOUSSE
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="14.jpg" alt="">
+                            <span class="card-title"></span>
+                        </div>
+                        <div class="card-content">
+                            Formation C++, TUNIS
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section section-gallery scrollspy">
+        <div class="container">
+            <h4 class="center" style="font-size: 25px" ><span class="light-blue-text"style="font-size: 25px" > Nos formations disponibles </span>  </h4>
+
+            <div class="row">
+                <div class="col s12 m3">
+                    <img src="17.jpg" alt="" class="materialboxed responsive-img">
+                </div>
+                <div class="col s12 m3">
+                    <img src="18.jpg" alt="" class="materialboxed responsive-img">
+                </div>
+                <div class="col s12 m3">
+                    <img src="19.jpg" alt="" class="materialboxed responsive-img">
+                </div>
+                <div class="col s12 m3">
+                    <img src="20.jpg" alt="" class="materialboxed responsive-img">
+                </div>
             </div>
 
+
         </div>
-    </div>
+    </section>
 
-    <div class="slider" id="main-slider"><!-- outermost container element -->
+    <section class="section section-follow light-blue
+      darken-2 white-text center">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
 
-        <img src="../static/3.jpg" th:src="@{3.jpg}" alt="Second" class="slide" />
+                    <p>
+                        Suivez-nous sur nos réseaux sociaux pour toute nouvelle actualité.</p>
+                    <a href="#" class="white-text">
+                        <i class="fab fa-facebook fa-4x"></i>
+                    </a>
+                    <a href="#" class="white-text">
+                        <i class="fab fa-twitter fa-4x"></i>
+                    </a>
+                    <a href="#" class="white-text">
+                        <i class="fab fa-linkedin fa-4x"></i>
+                    </a>
+                    <a href="#" class="white-text">
+                        <i class="fab fa-google-plus fa-4x"></i>
+                    </a>
+                    <a href="#" class="white-text">
+                        <i class="fab fa-pinterest fa-4x"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <img src="../static/5.jpg" th:src="@{5.jpg}" alt="Third" class="slide" />
-        <img src="../static/6.jpg" th:src="@{6.jpg}" alt="Third" class="slide" />
-        <img src="../static/2.png" th:src="@{2.png}" alt="First" class="slide" />
-        <img src="../static/4.jpg" th:src="@{4.jpg}" alt="Third" class="slide" />
-
-    </div>
-    <div id="bandeh">
-        <p class="item-1"><b> Evoluer vos compétences </b> </p>
-
-        <p class="item-2">  <b> Renforcer votre  profil</b> </p>
-
-        <p class="item-3"><b> Améliorer vos qualités</b></p></div>
 
 
-
-</header>
-
-
-
-
-
-<script>
-    (function() {
-        function Slideshow( element ) {
-            this.el = document.querySelector( element );
-            this.init();
-        }
-        Slideshow.prototype = {
-            init: function() {
-                this.wrapper = this.el.querySelector( ".slider-wrapper" );
-                this.slides = this.el.querySelectorAll( ".slide" );
-                this.previous = this.el.querySelector( ".slider-previous" );
-                this.next = this.el.querySelector( ".slider-next" );
-                this.index = 0;
-                this.total = this.slides.length;
-                this.timer = null;
-                this.action();
-                this.stopStart();
-            },
-            _slideTo: function( slide ) {
-                var currentSlide = this.slides[slide];
-                currentSlide.style.opacity = 1;
-                for( var i = 0; i < this.slides.length; i++ ) {
-                    var slide = this.slides[i];
-                    if( slide !== currentSlide ) {
-                        slide.style.opacity = 0;
-                    }
-                }
-            },
-            action: function() {
-                var self = this;
-                self.timer = setInterval(function() {
-                    self.index++;
-                    if( self.index == self.slides.length ) {
-                        self.index = 0;
-                    }
-                    self._slideTo( self.index );
-                }, 3000);
-            },
-            stopStart: function() {
-                var self = this;
-                self.el.addEventListener( "mouseover", function() {
-                    clearInterval( self.timer );
-                    self.timer = null;
-                }, false);
-                self.el.addEventListener( "mouseout", function() {
-                    self.action();
-                }, false);
-            }
-        };
-        document.addEventListener( "DOMContentLoaded", function() {
-            var slider = new Slideshow( "#main-slider" );
+    <!--JavaScript at end of body for optimized loading-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+    <script>
+        // Sidenav
+        const sideNav = document.querySelector('.sidenav');
+        M.Sidenav.init(sideNav, {});
+        // Slider
+        const slider = document.querySelector('.slider');
+        M.Slider.init(slider, {
+            indicators: false,
+            height: 500,
+            transition: 500,
+            interval: 6000
         });
-    })();
-</script>
-
+        // Autocomplete
+        const ac = document.querySelector('.autocomplete');
+        M.Autocomplete.init(ac, {
+            data: {
+                "Aruba": null,
+                "Cancun": null,
+                "Hawaii": null,
+                "Florida": null,
+                "California": null,
+                "Jamacia": null,
+                "Europe": null,
+                "Santorini Greece": null,
+                "Ixtapa": null
+            }
+        });
+        // Material Boxed
+        const mb = document.querySelectorAll('.materialboxed');
+        M.Materialbox.init(mb,{});
+        // ScrollSpy
+        const ss = document.querySelectorAll('.scrollspy');
+        M.ScrollSpy.init(ss, {});
+    </script>
+    </container>
+</div>
 </body>
 </html>

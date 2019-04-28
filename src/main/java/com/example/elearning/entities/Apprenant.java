@@ -10,7 +10,7 @@ import java.util.List;
 
 @Getter @Setter @NoArgsConstructor
 @Entity
-@DiscriminatorValue("A")
+    @DiscriminatorValue("A")
 public class Apprenant extends Profile {
 
     @ManyToMany(cascade = { CascadeType.ALL })

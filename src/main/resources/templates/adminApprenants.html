@@ -22,6 +22,9 @@
     <div class="bg-black">
         <div class="container-fluid">
             <ul class="nav navbar-nav navbar-left">
+                <li><a th:href="@{/accueil}"> Accueil </a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                 <li><a th:href="@{/admin}"> Formations</a></li>
                 <li><a th:href="@{/adminFormateurs}"> Formateurs</a></li>
                 <li><a th:href="@{/adminApprenants}"> Apprenants</a></li>
@@ -79,15 +82,15 @@
                         <a th:href="@{/adminApprenants(page=${status.index}, motCle=${motCle})}" th:text="${status.index}"></a>
                     </li>
                 </ul>
+                <div class="col-md-6 col-md-offset-8">
+                    <form th:action="@{/ajoutApprenant}">
+                        <button type="submit" class="btn btn-primary">Ajouter un apprenant</button>
+                    </form>
+                </div>
             </div>
             </div>
         </div>
-<div class="col-md-6 spacer col-md-offset-5">
-    <label>Ajouter un apprenant manuellement par ici: </label>
-    <form th:action="@{/ajoutApprenant}">
-        <button type="submit" class="btn btn-primary">Ajouter un apprenant</button>
-    </form>
-</div>
+
 
 </body>
 </html>

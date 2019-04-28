@@ -3,7 +3,8 @@
 <html
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        xmlns:th="http://www.thymeleaf.org">
+        xmlns:th="http://www.thymeleaf.org"
+        layout:decorate="~{fragments/layout}">
 
 <head>
     <meta charset="UTF-8">
@@ -18,27 +19,7 @@
 </head>
 
 <body>
-<header>
-    <div class="bg-black">
-        <div class="container-fluid">
-            <ul class="nav navbar-nav navbar-left">
-                <li><a th:href="@{/accueil}"> Accueil </a></li>
-                <li><a th:href="@{/inscription}"> S'inscrire/Se connecter </a></li>
-            </ul>
-
-            <ul class="nav navbar-nav navbar-right">
-                <li><a th:href="@{/apropos}"> A propos </a></li>
-                <li><a th:href="@{/catalogue}">Catalogue des formations</a></li>
-                <li><a th:href="@{/contact}">Contact</a></li>
-            </ul>
-
-            <div id="logo" style="text-align: center;">
-                <img src="../static/bebrighter.png" width="200" th:src="@{bebrighter.png}" alt="logo"/>
-            </div>
-        </div>
-    </div>
-</header>
-
+<div layout:fragment="content">
 <div class="container">
     <div class="row">
         <div class="span12">
@@ -110,50 +91,10 @@
         </p>
         <div class="dotted_line">
         </div>
-        <!--<h4><strong>Restez en contact avec nous à travers nos réseaux sociaux</strong></h4>
-        <div class="row">
-            <div class="col-md-4"><a class="fb-ic mr-3" role="button"><i class="fab fa-lg fa-facebook-f"></i></a></div>
-            <div class="col-md-4">hi</div>
-            <div class="col-md-4">hi</div>
-        </div>-->
-        <!--<div class="row">
-            <div class="col-md-1 col-md-offset-3">
-                <a class="btn-floating btn-lg btn-fb" type="button" role="button"><i class="fab fa-facebook-f"></i></a>
-            </div>
-            <div class="col-md-1 col-md-offset-3">
-                <a class="btn-floating btn-lg btn-fb" type="button" role="button"><i class="fab fa-facebook-f"></i></a>
-            </div>
-            <div class="col-md-1 col-md-offset-3">
-                <a class="btn-floating btn-lg btn-fb" type="button" role="button"><i class="fab fa-facebook-f"></i></a>
-            </div>
-        </div>-->
-        <!--<div class="social-links">
-            <ul class="social-links">
-                <a class="btn-floating btn-lg btn-fb" type="button" role="button"><i class="fab fa-facebook-f"></i></a>
-                <li><a href="#" title="Facebook"><i class="icon-square icon-32 icon-facebook"></i></a></li>
 
-            </ul>
-        </div>-->
     </div>
 </div>
 
-<!--<footer>
-    <div class="verybottom">
-        <div class="container">
-            <div class="row">
-                <div class="span12">
-                    <div class="aligncenter">
-                        <div class="logo">
-                            <a class="brand"><img src="../static/bebrighter.png" th:src="@{bebrighter.png}" alt="" /></a>
-                        </div>
-                        <p>
-                            &copy; O.R.S - Tous les droits sont réservés.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>-->
+</div>
 </body>
 </html>
