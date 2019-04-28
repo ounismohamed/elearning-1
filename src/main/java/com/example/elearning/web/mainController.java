@@ -304,9 +304,9 @@ public class mainController {
         return "redirect:/adminApprenants";
     }
 
-    @GetMapping(value = "/login")
-    public String login(){
-        return "login";
+    @GetMapping(value = "/logout")
+    public String logout(){
+        return "identification";
     }
 
 }

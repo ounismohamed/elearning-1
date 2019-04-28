@@ -3,7 +3,7 @@
 <html
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        xmlns:th="http://www.thymeleaf.org">
+        xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
@@ -23,6 +23,12 @@
         <div class="container-fluid">
             <ul class="nav navbar-nav navbar-left">
                 <li><a th:href="@{/accueil}"> Accueil </a></li>
+                <li  sec:authorize="isAuthenticated()">
+                    <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post" ><!-- sec:authorize="isAuthenticated()"-->
+                        <input class="form-control mr-sm-2" type="hidden" />
+                        <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button>
+                    </form>
+                </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a th:href="@{/admin}"> Formations</a></li>
