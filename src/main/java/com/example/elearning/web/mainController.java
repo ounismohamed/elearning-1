@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
-import java.text.Normalizer;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,7 +29,7 @@ public class mainController {
     @Autowired
     private ContactRepository contactRepository;
     @Autowired
-    private ProfileRepository profileRepository;
+    private ModuleRepository moduleRepository;
     @Autowired
     private FormateurRepository formateurRepository;
     @Autowired
@@ -224,7 +223,7 @@ public class mainController {
     @RequestMapping(value = "/saveFormation",method = RequestMethod.POST)
     public String saveFormation(Formation formation){
         formationRepository.save(formation);
-        return "redirect:/admin";
+        return "redirect:/ajoutModules";
     }
 
     @GetMapping("/saveInscriptionFormateur")
@@ -245,6 +244,18 @@ public class mainController {
             return "editerFormation";
         }
         formationRepository.save(formation);
+        return "ajoutModules";
+    }
+
+    @RequestMapping(value = "/ajoutModules",method = RequestMethod.GET)
+    public String formModule(Model model){
+        model.addAttribute("module",new Module());
+        return "ajoutModules";
+    }
+
+    @RequestMapping(value = "/saveModule",method = RequestMethod.POST)
+    public String saveModule(Module module){
+        moduleRepository.save(module);
         return "redirect:/admin";
     }
 
